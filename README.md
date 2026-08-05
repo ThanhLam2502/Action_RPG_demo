@@ -17,17 +17,16 @@ TopdownRPG/
 │   ├── Assets/
 │   ├── Packages/
 │   ├── ProjectSettings/
-│   ├── ProjectSettings/
 │   └── .gitignore
 │
 ├── docs/                   # Project documentation
-│   ├── 01_project.md          # giới thiệu + plan
-│   ├── 02_architecture.md     # kiến trúc
+│   ├── 01_project.md          # giới thiệu, mục tiêu overview tổng quát
+│   ├── 02_architecture.md     # kiến trúc hệ thống
 │   ├── 03_game_design.md      # game play
-│   ├── 04_references.md       # research & learning
-│   ├── 05_dev_note.md         # suy nghĩ, ghi chú trong quá trình phát triển
+│   ├── 04_references.md       # tutorial, research & learning
+│   ├── 05_dev_note.md         # nhật ký phát triển, ý tưởng ngắn  
 │   ├── 06_decisions.md        # các quyết định quan trọng
-│   ├── 07_backlog.md          # ý tưởng tương lai, tính năng dự kiến, nợ kỹ thuật,..
+│   ├── 07_backlog.md          # ý tưởng tương lai, technical debt, wishlist,..
 │   └── Yeu_cau_Unity_1_tuan.docx
 │
 ├── deliverables/           # Submission materials
