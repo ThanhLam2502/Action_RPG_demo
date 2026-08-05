@@ -33,7 +33,7 @@ Game thuộc thể loại:
 - Single Player (giai đoạn đầu)
 
 Người chơi điều khiển Hero mình yêu thích để tạo nên hướng build yêu thích phục vụ chiến đấu, thu thập, và phát triển
-nhân vật
+nhân vật.
 
 Gameplay xoay quanh:
 
@@ -49,6 +49,7 @@ Gameplay xoay quanh:
 # Triết lý thiết kế
 
 Ngay từ đầu, dự án được xây dựng với mục tiêu hỗ trợ những hệ thống lớn trong tương lai.
+
 - Có nhiều Hero trong cùng tài khoản
 - Hero có Skill riêng
 - Weapon có Skill riêng
