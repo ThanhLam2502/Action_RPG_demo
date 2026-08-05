@@ -11,7 +11,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6c863f9-32f4-4c0f-ac3d-ba6d90760410" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/01_project.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/02_architecture.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/03_game_design.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/04_references.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/05_dev_note.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/06_decisions.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/07_backlog.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Yeu_cau_Unity_1_tuan.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deliverables/task_list.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deliverables/tech_note.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deliverables/time_line.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/document.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/temp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.idea/.idea.Client/.idea/git_toolbox_prj.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.idea/.idea.Client/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.idea/.idea.Client/.idea/projectSettingsUpdater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.idea/.idea.Client/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/00_Project/Yeu_cau_Unity_1_tuan.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,14 +43,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ThanhLam2502&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ThanhLam2502/Action_RPG_demo.git&quot;,
+    &quot;accountId&quot;: &quot;f118ab5c-3410-4fde-8b6b-3b6fd2ac83f4&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Client/Assets/TutorialInfo/Scripts/Readme.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3HTpp2gkF5WpMgQZ0kPDxxjxfi3" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -42,9 +75,13 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
 }]]></component>
   <component name="TaskManager">
@@ -56,6 +93,9 @@
       <updated>1785902096798</updated>
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />

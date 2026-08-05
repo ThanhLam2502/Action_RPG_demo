@@ -1,0 +1,401 @@
+--- 2026/08/04
+--- Thanh_Lam
+--- 3D Game
+
+PET PROJECT: ACTION RPG
+
+
+
+---------------------------------------------------------------------
+I. Feature
+---------------------------------------------------------------------
+
+1. Character
+- Điều khiển WASD
+- Chuột để target (có thể)
+- Animation Idle/Run/Attack
+- HP
+- Mana
+- Death
+
+2. Combat
+- Attack thường
+- Damage
+- Critical
+- Attack Speed
+- Knockback nhẹ
+
+3. Skill
+- Dash
+- Fireball
+- Spin Attack
+
+4. Enemy
+- Goblin
+	+ di chuyển
+	+ rượt đuổi
+	+ tấn công
+- Skeleton
+	+ bắn tên
+
+5. Boss
+- HP <70% -> thêm skill -> HP <30% -> thịnh nộ (tăng dmg/ tăng speed attack)
+Mục tiêu: học State Machine
+
+6. Loot
+- Quái chết: drop đồ (gold/potion/sword)
+
+7. Inventory
+- Có nhiều ô: chưa stack item
+vd: Potion x5, Sword, Shield, Gem
+
+8. Equipment
+- Weapon
+- Helmet
+- Armor
+- Ring (x2)
+Mục tiêu: Stat thay đổi
+
+9. NPC
+Talk, Shop, Quest (option)
+
+10. Shop
+Mua/Bán: Potion, Sword, Armor
+
+11. Hero System
+HeroData: Knight, Mage, Archer
+Flow: Account -> Select Hero -> Spawn Hero
+
+12. Weapon Skill
+P/s: Hero Skill và Weapon Skill
+Ex: Hero Skill: Hầu hết là bị động (ví dụ knight tăng dmg cho vũ khí cận chiến)
+	Weapon Skill: Skil riêng biệt của vũ khí (ví dụ như dash, bắn 1 vòng tròn trong mục tiêu)
+	
+---------------------------------------------------------------------
+II. Folder
+---------------------------------------------------------------------	
+Assets
+├── Art
+├── Audio
+├── Animation
+├── Materials
+├── Prefabs
+├── Scenes
+│── Scripts
+	├── Core
+	├── Character
+	├── Combat
+	├── Skill
+	├── Weapon
+	├── Enemy
+	├── Boss
+	├── Inventory
+	├── Item
+	├── Equipment
+	├── NPC
+	├── Shop
+	├── UI
+	├── Managers
+	├── Save
+	└── Utilities
+│── ScriptableObjects
+├── UI
+├── VFX
+├── Resources
+└── Settings
+
+---------------------------------------------------------------------
+III. Design Pattern
+---------------------------------------------------------------------
+1. Singleton
+2. State Machine
+3. ScriptableObject
+4. Observer/Event
+5. Object Pool
+6. Factory
+7. Interface
+8. Strategy
+9. Command (cho Skill)
+10. Dependency Injection (có thể)
+
+---------------------------------------------------------------------
+IV. Roadmap
+---------------------------------------------------------------------
+Architecture -> Data -> Core Systems -> Gameplay
+Core
+│
+├── Interface
+├── StateMachine
+├── Events
+├── Factory
+├── Pool
+├── Command
+└── Utilities
+
+Data
+│
+├── HeroData
+├── WeaponData
+├── SkillData
+├── EnemyData
+├── ItemData
+└── EquipmentData
+
+Gameplay
+│
+├── Character
+├── Combat
+├── Skill
+├── Weapon
+├── Enemy
+└── Boss
+
+Systems
+│
+├── Inventory
+├── Equipment
+├── Loot
+├── NPC
+├── Shop
+├── Save
+└── Spawn
+
+Managers
+│
+├── GameManager
+├── UIManager
+├── AudioManager
+└── SceneManager
+
+Assets
+│
+├── Data                        <- Database (ScriptableObject)
+│   ├── Heroes
+│	│	├── Knight.asset
+│   │   ├── Mage.asset
+│   │   ├── Archer.asset
+│   │   └── Paladin.asset   
+│   ├── Skills
+│   ├── Weapons
+│   ├── Items
+│   ├── Enemies
+│   └── NPC
+│
+├── Gameplay
+│   ├── Hero                    <- Runtime Object
+│   ├── Enemy
+│   ├── NPC
+│   └── Player
+│
+├── Systems
+│   ├── Account                 <- Quản lý trạng thái tài khoản
+│   ├── Hero                    <- Spawn, đổi Hero
+│   ├── Inventory
+│   ├── Equipment
+│   ├── Combat
+│   └── Save
+│
+├── Save                        <- Model dùng để lưu/đọc
+│
+├── UI
+│   └── HeroSelection           <- Màn hình chọn Hero
+│
+└── Prefabs
+    ├── Heroes
+    ├── Weapons
+
+
+Account
+│
+├── Wallet
+│
+├── Hero Collection
+│   ├── Knight Progress
+│   ├── Mage Progress
+│   └── Archer Progress
+│
+├── Inventory
+│   ├── Item Instance
+│   ├── Materials
+│   ├── Consumables
+│   └── Equipments
+│
+├── Current Hero
+│
+└── Save Data
+
+
+Art
+    └── UI
+        └── Heroes
+            └── Paladin.png
+Assets
+└── Data
+    └── Skills
+        ├── HolySlash.asset
+        ├── ShieldBash.asset
+        └── DivineBlessing.asset
+		
+Assets
+│
+├── Art
+│   ├── Models
+│   ├── Materials
+│   ├── Textures
+│   ├── Animations
+│   ├── VFX
+│   └── UI
+│
+├── Audio
+│   ├── Music
+│   └── SFX
+│
+├── Data                        (ScriptableObject)
+│   │
+│   ├── Heroes
+│   │   ├── Knight.asset
+│   │   ├── Mage.asset
+│   │   └── Archer.asset
+│   │
+│   ├── Items
+│   │   ├── Weapons
+│   │   │   ├── IronSword.asset
+│   │   │   ├── LongBow.asset
+│   │   │   └── MagicStaff.asset
+│   │   │
+│   │   ├── Armor
+│   │   │
+│   │   ├── Consumables
+│   │   │
+│   │   └── Materials
+│   │
+│   ├── Skills
+│   │   ├── Slash.asset
+│   │   ├── Fireball.asset
+│   │   └── Heal.asset
+│   │
+│   ├── Enemies
+│   │
+│   └── NPC
+│
+├── Prefabs
+│   │
+│   ├── Heroes
+│   │   ├── Knight.prefab
+│   │   ├── Mage.prefab
+│   │   └── Archer.prefab
+│   │
+│   ├── Enemies
+│   │
+│   ├── NPC
+│   │
+│   ├── Items
+│   │
+│   ├── Projectiles
+│   │
+│   └── Environment
+│
+├── Scenes
+│   ├── Bootstrap
+│   ├── MainMenu
+│   ├── Village
+│   ├── Dungeon
+│   └── Test
+│
+├── Scripts
+│   │
+│   ├── Core
+│   │   ├── GameBootstrap
+│   │   ├── SceneLoader
+│   │   └── GameState
+│   │
+│   ├── Managers
+│   │   ├── GameManager
+│   │   ├── InputManager
+│   │   ├── UIManager
+│   │   └── AudioManager
+│   │
+│   ├── Gameplay
+│   │   │
+│   │   ├── Hero
+│   │   │   ├── HeroController
+│   │   │   ├── HeroMovement
+│   │   │   ├── HeroCombat
+│   │   │   ├── HeroStats
+│   │   │   ├── HeroAnimation
+│   │   │   └── HeroSkillCaster
+│   │   │
+│   │   ├── Enemy
+│   │   │
+│   │   ├── NPC
+│   │   │
+│   │   ├── Projectile
+│   │   │
+│   │   └── Interactable
+│   │
+│   ├── Systems
+│   │   ├── AccountSystem: Gold, Hero, Quest
+│	│   │   ├── InventorySystem
+│	│   │   ├── EquipmentSystem
+│	│   │   └── HeroCollection
+│	│	│
+│   │   ├── CombatSystem
+│   │   ├── SkillSystem
+│   │   └── SaveSystem
+│   │
+│   ├── UI
+│   │   ├── HUD
+│   │   ├── Inventory
+│   │   ├── HeroSelection
+│   │   └── MainMenu
+│   │
+│   └── Save
+│       ├── AccountData
+│       └── SaveManager
+│
+└── Resources (nếu cần)
+
+
+                    GAME
+                      │
+      ┌───────────────┴────────────────┐
+      │                                │
+    Account                        Game World
+      │                                │
+      │                                │
+      │                           Enemy
+      │                           NPC
+      │                           Boss
+      │
+      ├──────── Wallet
+      │
+      ├──────── Inventory
+      │            │
+      │            ├── Iron Sword
+      │            ├── Long Bow
+      │            ├── Potion
+      │            └── Materials
+      │
+      ├──────── Hero Collection
+      │            │
+      │            ├── Knight
+      │            ├── Mage
+      │            └── Archer
+      │
+      └──────── Current Hero
+                    │
+                    ▼
+               Hero Runtime
+                    │
+        ┌───────────┼────────────┐
+        │           │            │
+   HeroConfig   Equipment    HeroStats
+        │           │            │
+        │           │            │
+        │      Item Instance     │
+        │           │            │
+        └───────────┴────────────┘
+                    │
+               Combat System
+                    │
+             Damage / Skill
