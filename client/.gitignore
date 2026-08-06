@@ -37,6 +37,13 @@
 # Visual Studio cache directory
 .vs/
 
+# IntelliJ IDEA cache and workspace files
+.idea/caches/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/shelf/
+*.iws
+
 # Gradle cache directory
 .gradle/
 
