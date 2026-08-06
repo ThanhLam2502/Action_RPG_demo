@@ -43,13 +43,14 @@ TopdownRPG/
 │   └── .gitignore
 │
 ├── docs/                   # Project documentation
-│   ├── 01_project.md          # giới thiệu, mục tiêu overview tổng quát
-│   ├── 02_architecture.md     # kiến trúc hệ thống
-│   ├── 03_game_design.md      # game play
-│   ├── 04_references.md       # tutorial, research & learning
-│   ├── 05_dev_note.md         # nhật ký phát triển, ý tưởng ngắn  
-│   ├── 06_decisions.md        # các quyết định quan trọng
-│   ├── 07_backlog.md          # ý tưởng tương lai, technical debt, wishlist,..
+│   ├── 01_project.md               # giới thiệu, định hướng
+│   ├── 02_game_design.md           # game play
+│   ├── 03_architecture.md          # kiến trúc hệ thống
+│   ├── 04_development_roadmap.md   # roadmap
+│   ├── 05_references.md            # tutorial, research & learning
+│   ├── 06_dev_note.md              # nhật ký phát triển, ý tưởng ngắn  
+│   ├── 07_decisions.md             # các quyết định quan trọng
+│   ├── 08_backlog.md               # ý tưởng tương lai, technical debt, wishlist,..
 │   └── Yeu_cau_Unity_1_tuan.docx
 │
 ├── deliverables/           # Submission materials

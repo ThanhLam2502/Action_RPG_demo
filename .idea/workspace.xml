@@ -11,21 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6c863f9-32f4-4c0f-ac3d-ba6d90760410" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/02_game_design.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/03_architecture.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/06_dev_note.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deliverables/task_list.md" beforeDir="false" afterPath="$PROJECT_DIR$/deliverables/task_list.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deliverables/tech_note.md" beforeDir="false" afterPath="$PROJECT_DIR$/deliverables/tech_note.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deliverables/time_line.md" beforeDir="false" afterPath="$PROJECT_DIR$/deliverables/time_line.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/01_project.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01_project.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/02_architecture.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04_development_roadmap.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/03_game_design.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07_decisions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/04_references.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/05_references.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/05_dev_note.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/06_decisions.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/08_backlog.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/07_backlog.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +105,8 @@
     <MESSAGE value="idea &amp; document" />
     <MESSAGE value="style" />
     <MESSAGE value="rename &quot;Client&quot; to &quot;client&quot;, &quot;Docs&quot; to &quot;docs&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename &quot;Client&quot; to &quot;client&quot;, &quot;Docs&quot; to &quot;docs&quot;" />
+    <MESSAGE value="update document" />
+    <option name="LAST_COMMIT_MESSAGE" value="update document" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
