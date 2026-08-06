@@ -1,38 +1,50 @@
-# Syntax .md
+# Unity Structure
+```
+Assets
+├── Art
+├── Audio
+├── Animation
+├── Materials
+├── Prefabs
+├── Scenes
+├── Scripts
+├── ScriptableObjects
+├── UI
+├── Resources
+└── Settings
+```
 
-*Từ cần in nghiêng 1*  
-_Từ cần in nghiêng 2_  
-**Từ cần in đậm 1**  
-__Từ cần in đậm 2__  
-***Từ in đậm và in nghiêng 1***  
-___Từ in đậm và in nghiêng 2___  
-~~Khuyến mại~~  
-`inline code`
-> Trích dẫn dòng 1  
-> Trích dẫn dòng 2
+```
+Scripts
+├── Core
+├── Character
+├── Combat
+├── Skill
+├── Weapon
+├── Enemy
+├── Boss
+├── Inventory
+├── Item
+├── Equipment
+├── NPC
+├── Shop
+├── UI
+├── Managers
+├── Save
+└── Utilities
+```
 
-1. Mục thứ nhất
-2. Mục thứ hai
-3. Mục thứ ba
+# Design Pattern sẽ học
 
-- Mục thứ nhất
-- Mục thứ hai
-- Mục thứ ba
+Trong project nhỏ này bạn sẽ chạm tới gần như toàn bộ những pattern quan trọng của Unity:
 
-- [ ] Checkbox
-- [x] Checked
-
-| Cột 1 | Cột 2 | Cột 3 | Cột 4 |
-|:------|:------|:------|:------|
-| A     | B     | C     | D     |
-| E     | F     | G     | H     |
-| I     | K     | L     | M     |
-
----
-***
-___
-
-Trực tiếp: https://github.com/lucthienphong1120  
-Gián tiếp: [Github](https://github.com/lucthienphong1120)
-
-![](https://avatars.githubusercontent.com/u/583231)
+- Singleton
+- State Machine
+- ScriptableObject
+- Observer/Event
+- Object Pool
+- Factory
+- Interface
+- Strategy
+- Command (cho Skill)
+- Dependency Injection (nếu muốn)

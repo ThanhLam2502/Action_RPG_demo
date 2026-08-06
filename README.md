@@ -34,7 +34,7 @@ Sau khi kiến trúc ổn định, dự án sẽ tiếp tục mở rộng sang c
 # Repository Structure
 
 ```text
-TopdownRPG/
+Action_RPG_demo/
 │
 ├── client/                 # Unity Project
 │   ├── Assets/
