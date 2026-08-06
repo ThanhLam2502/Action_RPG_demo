@@ -4,9 +4,32 @@ Unity 3D Game tutorial
 
 # Description
 
-Pet project được phát triển bằng Unity.  
-Mục tiêu là học cách xây dựng game RPG hoàn chỉnh.  
-Xây dựng kiến trúc sạch, dễ bảo trì và mở rộng về sau
+Đây là pet project được phát triển bằng Unity với mục tiêu là xây dựng một dự án hoàn chỉnh, có kiến trúc sạch, dễ bảo
+trì và mở rộng lâu dài.
+
+Dự án không chỉ hướng đến việc tạo ra một sản phẩm có thể chơi được mà còn là quá trình học tập và thực hành quy trình
+phát triển game chuyên nghiệp, từ thiết kế gameplay, xây dựng kiến trúc phần mềm đến tổ chức mã nguồn và tài liệu.
+
+# Goals
+
+- Học Unity thông qua một dự án thực tế.
+- Xây dựng tư duy thiết kế Gameplay và Game System.
+- Áp dụng Clean Architecture và các nguyên tắc SOLID.
+- Xây dựng codebase dễ đọc, dễ bảo trì và mở rộng.
+- Tổ chức tài liệu và quy trình phát triển chuyên nghiệp.
+
+# Technical
+
+- Unity
+- C#
+- ScriptableObject
+- Git, Github
+
+# Scope
+
+Giai đoạn đầu tập trung xây dựng nền tảng của một Top-down Action RPG.
+
+Sau khi kiến trúc ổn định, dự án sẽ tiếp tục mở rộng sang các hệ thống Home, Economy và Multiplayer.
 
 # Repository Structure
 

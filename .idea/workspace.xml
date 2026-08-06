@@ -11,8 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6c863f9-32f4-4c0f-ac3d-ba6d90760410" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/02_game_design.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/03_architecture.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/06_dev_note.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/01_project.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/01_project.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliverables/task_list.md" beforeDir="false" afterPath="$PROJECT_DIR$/deliverables/task_list.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliverables/tech_note.md" beforeDir="false" afterPath="$PROJECT_DIR$/deliverables/tech_note.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliverables/time_line.md" beforeDir="false" afterPath="$PROJECT_DIR$/deliverables/time_line.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/01_project.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01_project.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/02_architecture.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04_development_roadmap.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/03_game_design.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07_decisions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/04_references.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/05_references.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05_dev_note.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/06_decisions.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/08_backlog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_backlog.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,22 +60,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e6c863f9-32f4-4c0f-ac3d-ba6d90760410" name="Changes" comment="" />
@@ -78,11 +91,34 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="aeb9a46c-d414-477f-a5db-78cb10b0c1a4" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="aeb9a46c-d414-477f-a5db-78cb10b0c1a4">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="setup repository structure" />
     <MESSAGE value="idea &amp; document" />
-    <option name="LAST_COMMIT_MESSAGE" value="idea &amp; document" />
+    <MESSAGE value="style" />
+    <MESSAGE value="rename &quot;Client&quot; to &quot;client&quot;, &quot;Docs&quot; to &quot;docs&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename &quot;Client&quot; to &quot;client&quot;, &quot;Docs&quot; to &quot;docs&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

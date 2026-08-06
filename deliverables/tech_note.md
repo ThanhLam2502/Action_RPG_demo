@@ -1,10 +1,8 @@
 # Tech Notes
 
-| Topic           | Note                                                                                            |
-|:----------------|:------------------------------------------------------------------------------------------------|
-| Object Pooling  | Design Pattern giúp tái sử dụng các đối tượng đã khởi tạo thay vì liên tục tạo mới và hủy chúng |
-
-___
+| Topic          | Note                                                                                            |
+|:---------------|:------------------------------------------------------------------------------------------------|
+| Object Pooling | Design Pattern giúp tái sử dụng các đối tượng đã khởi tạo thay vì liên tục tạo mới và hủy chúng |
 
 ## Object Pooling
 
