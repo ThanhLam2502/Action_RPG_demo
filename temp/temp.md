@@ -36,7 +36,7 @@ Scripts
 
 # Design Pattern sẽ học
 
-Trong project nhỏ này bạn sẽ chạm tới gần như toàn bộ những pattern quan trọng của Unity:
+Những pattern quan trọng của Unity:
 
 - Singleton
 - State Machine
