@@ -112,9 +112,15 @@ Assets/
 | `Animation` | Chỉ tạo khi animation đủ nhiều     |
 | `VFX`       | Chỉ tạo khi VFX đủ nhiều           |
 | `Audio`     | Chỉ tạo khi audio đủ nhiều         |
-
 ```
 
+```text
+Feature/
+├── Runtime/      ← logic chạy game
+├── Data/         ← định nghĩa dữ liệu
+├── Content/      ← asset/nội dung cụ thể
+└── UI/           ← giao diện của feature
+```
 
 # Design Pattern sẽ học
 

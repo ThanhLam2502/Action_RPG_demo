@@ -8,6 +8,13 @@ namespace TopdownRPG.Character
         [field: SerializeField] public PlayerMovementState CurrentPlayerMovementState { get; private set; } = PlayerMovementState.Idling;
 
         public void SetPlayerMovementState(PlayerMovementState state) => CurrentPlayerMovementState = state;
+
+        public bool IsGroundState() {
+            return CurrentPlayerMovementState == PlayerMovementState.Idling
+                   || CurrentPlayerMovementState == PlayerMovementState.Walking
+                   || CurrentPlayerMovementState == PlayerMovementState.Running
+                   || CurrentPlayerMovementState == PlayerMovementState.Sprinting;
+        }
     }
 
     public enum PlayerMovementState

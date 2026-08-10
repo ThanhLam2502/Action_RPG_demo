@@ -10,5 +10,5 @@
   - https://www.youtube.com/watch?v=jS5x-dOtmdA&list=PLN7QjCLMMKD4KaQFAH6z_xc5D_KGidRVj
 - 3D tank: https://www.youtube.com/watch?v=ExzKCIjKICM
 - Tạo và viết code di chuyển cho nhân vật: https://www.youtube.com/watch?v=4o_Ynw-uaWM
-
+- Drop-In 3D Animations: https://www.youtube.com/watch?v=ZDy_0l6Kx9Y&list=PLYvjPIZvaz-oJZdFeK8wVpx16iFy3GaFV
 - asset: https://kenney.nl/assets

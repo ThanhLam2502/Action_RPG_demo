@@ -1,0 +1,30 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = false
+indent_style = space
+indent_size = 4
+
+[*.cs]
+
+# Namespace / Class brace xuống dòng
+csharp_new_line_before_open_brace = types, namespaces
+
+# Attribute không nằm cùng dòng với field
+csharp_place_field_attribute_on_same_line = never
+
+# Không chèn blank line quanh field
+csharp_blank_lines_around_field = 0
+
+# # Private field: _camelCase
+# dotnet_naming_rule.private_fields_should_have_underscore.severity = warning
+# dotnet_naming_rule.private_fields_should_have_underscore.symbols = private_fields
+# dotnet_naming_rule.private_fields_should_have_underscore.style = underscore_style
+# 
+# dotnet_naming_symbols.private_fields.applicable_kinds = field
+# dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+# 
+# dotnet_naming_style.underscore_style.required_prefix = _
+# dotnet_naming_style.underscore_style.capitalization = camel_case

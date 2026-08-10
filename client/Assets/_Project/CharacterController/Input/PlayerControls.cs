@@ -123,6 +123,16 @@ namespace _Project.CharactorController
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""1031b2d6-ef79-41d7-94bf-55fde847aa41"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -257,6 +267,17 @@ namespace _Project.CharactorController
                     ""action"": ""ToggleSprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2109173b-03a4-49b2-9d44-680730a2cdbf"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -268,6 +289,7 @@ namespace _Project.CharactorController
             m_PlayerLocomotionMap_Movement = m_PlayerLocomotionMap.FindAction("Movement", throwIfNotFound: true);
             m_PlayerLocomotionMap_Look = m_PlayerLocomotionMap.FindAction("Look", throwIfNotFound: true);
             m_PlayerLocomotionMap_ToggleSprint = m_PlayerLocomotionMap.FindAction("ToggleSprint", throwIfNotFound: true);
+            m_PlayerLocomotionMap_Jump = m_PlayerLocomotionMap.FindAction("Jump", throwIfNotFound: true);
         }
 
         ~@PlayerControls()
@@ -351,6 +373,7 @@ namespace _Project.CharactorController
         private readonly InputAction m_PlayerLocomotionMap_Movement;
         private readonly InputAction m_PlayerLocomotionMap_Look;
         private readonly InputAction m_PlayerLocomotionMap_ToggleSprint;
+        private readonly InputAction m_PlayerLocomotionMap_Jump;
         /// <summary>
         /// Provides access to input actions defined in input action map "PlayerLocomotionMap".
         /// </summary>
@@ -374,6 +397,10 @@ namespace _Project.CharactorController
             /// Provides access to the underlying input action "PlayerLocomotionMap/ToggleSprint".
             /// </summary>
             public InputAction @ToggleSprint => m_Wrapper.m_PlayerLocomotionMap_ToggleSprint;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerLocomotionMap/Jump".
+            /// </summary>
+            public InputAction @Jump => m_Wrapper.m_PlayerLocomotionMap_Jump;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -409,6 +436,9 @@ namespace _Project.CharactorController
                 @ToggleSprint.started += instance.OnToggleSprint;
                 @ToggleSprint.performed += instance.OnToggleSprint;
                 @ToggleSprint.canceled += instance.OnToggleSprint;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
 
             /// <summary>
@@ -429,6 +459,9 @@ namespace _Project.CharactorController
                 @ToggleSprint.started -= instance.OnToggleSprint;
                 @ToggleSprint.performed -= instance.OnToggleSprint;
                 @ToggleSprint.canceled -= instance.OnToggleSprint;
+                @Jump.started -= instance.OnJump;
+                @Jump.performed -= instance.OnJump;
+                @Jump.canceled -= instance.OnJump;
             }
 
             /// <summary>
@@ -490,6 +523,13 @@ namespace _Project.CharactorController
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnToggleSprint(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnJump(InputAction.CallbackContext context);
         }
     }
 }

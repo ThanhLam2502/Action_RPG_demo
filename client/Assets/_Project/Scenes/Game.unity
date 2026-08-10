@@ -732,6 +732,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThirdPersonController
       objectReference: {fileID: 0}
+    - target: {fileID: 3225724927237557930, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810025234911638008, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      propertyPath: drag
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810025234911638008, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      propertyPath: lookSenseH
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810025234911638008, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      propertyPath: lookSenseV
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810025234911638008, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      propertyPath: sprintSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810025234911638008, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      propertyPath: runAcceleration
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810025234911638008, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      propertyPath: sprintAcceleration
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
