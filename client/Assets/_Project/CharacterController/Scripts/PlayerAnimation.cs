@@ -41,15 +41,13 @@ namespace TopdownRPG.Character
             
             Vector2 inputTarget = isSprinting ? _playerLocomotionInput.MovementInput * 1.5f : _playerLocomotionInput.MovementInput;
             _currentBlendInput = Vector3.Lerp(_currentBlendInput, inputTarget, locomotionBlendSpeed * Time.deltaTime);
-
-            float inputMagnitude = _currentBlendInput.magnitude;
             
             _animator.SetBool(isGrounedHash, isGrounded);
             _animator.SetBool(isJumpingHash, isJumping);
             _animator.SetBool(isFallingHash, isFalling); 
             _animator.SetFloat(inputXHash, _currentBlendInput.x);
             _animator.SetFloat(inputYHash, _currentBlendInput.y);
-            _animator.SetFloat(inputMagnitudeHash, inputMagnitude);
+            _animator.SetFloat(inputMagnitudeHash, _currentBlendInput.magnitude);
         }
     }
 }

@@ -62,8 +62,8 @@ namespace TopdownRPG.Character
             bool isSprinting = _playerLocomotionInput.SprintToggleOn && isMovingLaterally; // order & matter
             bool isGrounded = IsGrounded();
 
-            PlayerMovementState lateralState = isSprinting ? PlayerMovementState.Sprinting :
-                isMovementInput || isMovingLaterally ? PlayerMovementState.Running : PlayerMovementState.Idling;
+            PlayerMovementState lateralState = isSprinting ? PlayerMovementState.Sprinting
+                : isMovementInput || isMovingLaterally ? PlayerMovementState.Running : PlayerMovementState.Idling;
             _playerState.SetPlayerMovementState(lateralState);
 
             // Control Airborn State
@@ -125,7 +125,7 @@ namespace TopdownRPG.Character
             _cameraRotation.x += lookSenseH * _playerLocomotionInput.LookInput.x;
             _cameraRotation.y = Mathf.Clamp(_cameraRotation.y - lookSenseV * _playerLocomotionInput.LookInput.y, -lookLimitV, lookLimitV);
 
-            _playerTargetRotation.x = transform.eulerAngles.x + lookSenseH * _playerLocomotionInput.LookInput.x;
+            _playerTargetRotation.x += transform.eulerAngles.x + lookSenseH * _playerLocomotionInput.LookInput.x;
             transform.rotation = Quaternion.Euler(0f, _playerTargetRotation.x, 0f);
 
             _playerCamera.transform.rotation = Quaternion.Euler(_cameraRotation.y, _cameraRotation.x, 0f);
