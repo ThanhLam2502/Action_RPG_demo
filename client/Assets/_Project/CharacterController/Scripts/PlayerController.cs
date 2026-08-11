@@ -8,26 +8,27 @@ namespace TopdownRPG.Character
     {
         #region Class Variables
 
-        [SerializeField]
-        private CharacterController _characterController;
+        [SerializeField] private CharacterController _characterController;
+        [SerializeField] private Camera _playerCamera;
 
-        [SerializeField]
-        private Camera _playerCamera;
-
-        [Header("Base Movement")]
+        // @formatter:off
+        [Header("Base Movement")] 
         public float runAcceleration = 0.25f;
         public float runSpeed = 4f;
         public float sprintAcceleration = 0.5f;
         public float sprintSpeed = 0.7f;
         public float drag = 0.1f;
         public float movingThreshold = 0.01f;
-        public float gravity = 25f;
+        public float gravity = 9.81f;
         public float jumpSpeed = 1.0f;
-
-        [Header("Camera Settings")]
+        // @formatter:on
+        
+        // @formatter:off
+        [Header("Camera Settings")] 
         public float lookSenseH = 0.1f;
         public float lookSenseV = 0.1f;
         public float lookLimitV = 89f;
+        // @formatter:on
 
         private PlayerLocomotionInput _playerLocomotionInput;
         private PlayerState _playerState;
@@ -122,12 +123,21 @@ namespace TopdownRPG.Character
         #region Late Update Logic
 
         private void LateUpdate() {
+            /*
+             Camera
+                ├── Yaw   ← _cameraRotation.x
+                └── Pitch ← _cameraRotation.y
+            Player
+                └── Yaw   ← _playerTargetRotation.x
+                */
             _cameraRotation.x += lookSenseH * _playerLocomotionInput.LookInput.x;
             _cameraRotation.y = Mathf.Clamp(_cameraRotation.y - lookSenseV * _playerLocomotionInput.LookInput.y, -lookLimitV, lookLimitV);
 
-            _playerTargetRotation.x += transform.eulerAngles.x + lookSenseH * _playerLocomotionInput.LookInput.x;
+            //  Player yaw
+            _playerTargetRotation.x += lookSenseH * _playerLocomotionInput.LookInput.x;
             transform.rotation = Quaternion.Euler(0f, _playerTargetRotation.x, 0f);
 
+            // Camera pitch + yaw
             _playerCamera.transform.rotation = Quaternion.Euler(_cameraRotation.y, _cameraRotation.x, 0f);
         }
 

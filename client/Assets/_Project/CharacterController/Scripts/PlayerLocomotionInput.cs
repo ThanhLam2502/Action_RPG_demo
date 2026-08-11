@@ -1,4 +1,3 @@
-using System;
 using _Project.CharactorController;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,11 +9,10 @@ namespace TopdownRPG.Character
     {
         #region Class Variable
 
-        [SerializeField]
-        private bool holdToSprint = true;
+        [SerializeField] private bool holdToSprint = true;
         public bool SprintToggleOn { get; private set; }
         public bool JumpPressed { get; private set; }
-        public PlayerControls PlayerControls { get; private set; }
+
         public Vector2 MovementInput { get; private set; }
         public Vector2 LookInput { get; private set; }
 
@@ -23,16 +21,23 @@ namespace TopdownRPG.Character
         #region Startup
 
         private void OnEnable() {
-            PlayerControls = new PlayerControls();
-            PlayerControls.Enable();
+            if (PlayerInputManager.Instance?.PlayerControls == null) {
+                Debug.LogError("Player controls is not initialized - cannot enable");
+                return;
+            }
 
-            PlayerControls.PlayerLocomotionMap.Enable();
-            PlayerControls.PlayerLocomotionMap.SetCallbacks(this);
+            PlayerInputManager.Instance.PlayerControls.PlayerLocomotionMap.Enable();
+            PlayerInputManager.Instance.PlayerControls.PlayerLocomotionMap.SetCallbacks(this);
         }
 
         private void OnDisable() {
-            PlayerControls.PlayerLocomotionMap.Disable();
-            PlayerControls.PlayerLocomotionMap.RemoveCallbacks(this);
+            if (PlayerInputManager.Instance?.PlayerControls == null) {
+                Debug.LogError("Player controls is not initialized - cannot disable");
+                return;
+            }
+
+            PlayerInputManager.Instance.PlayerControls.PlayerLocomotionMap.Disable();
+            PlayerInputManager.Instance.PlayerControls.PlayerLocomotionMap.RemoveCallbacks(this);
         }
 
         #endregion
