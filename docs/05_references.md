@@ -11,4 +11,7 @@
 - 3D tank: https://www.youtube.com/watch?v=ExzKCIjKICM
 - Tạo và viết code di chuyển cho nhân vật: https://www.youtube.com/watch?v=4o_Ynw-uaWM
 - Drop-In 3D Animations: https://www.youtube.com/watch?v=ZDy_0l6Kx9Y&list=PLYvjPIZvaz-oJZdFeK8wVpx16iFy3GaFV
+- Place item: https://www.youtube.com/watch?v=CYk1mEcvhqQ
+- Day & Light: https://www.youtube.com/watch?v=Mgb4b_oZ7yk
+
 - asset: https://kenney.nl/assets
