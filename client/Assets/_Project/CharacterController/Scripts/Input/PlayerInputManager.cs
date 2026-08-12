@@ -8,11 +8,9 @@ namespace TopdownRPG.Character
     {
         public static PlayerInputManager Instance;
         public PlayerControls PlayerControls { get; private set; }
-        
-        private void Awake()
-        {
-            if (Instance != null && Instance != this)
-            {
+
+        private void Awake() {
+            if (Instance != null && Instance != this) {
                 Destroy(gameObject);
                 return;
             }
@@ -20,15 +18,13 @@ namespace TopdownRPG.Character
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        
-        private void OnEnable()
-        {
+
+        private void OnEnable() {
             PlayerControls = new PlayerControls();
             PlayerControls.Enable();
         }
 
-        private void OnDisable()
-        {
+        private void OnDisable() {
             PlayerControls.Disable();
         }
     }

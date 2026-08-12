@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 namespace TopdownRPG.Character
 {
     [DefaultExecutionOrder(-2)]
-    public class PlayerActionInput : MonoBehaviour, PlayerControls.IPlayerActionMapActions
+    public class PlayerActionsInput : MonoBehaviour, PlayerControls.IPlayerActionMapActions
     {
         #region Class Variable
 

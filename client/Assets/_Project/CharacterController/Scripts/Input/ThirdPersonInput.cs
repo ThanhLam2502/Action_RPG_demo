@@ -10,7 +10,6 @@ namespace TopdownRPG.Character
     public class ThirdPersonInput : MonoBehaviour, PlayerControls.IThirdPersonMapActions
     {
         #region Class Variable
-
         public Vector2 ScrollInput { get; private set; }
 
         [SerializeField] private CinemachineCamera _virtualCamera;
@@ -19,11 +18,9 @@ namespace TopdownRPG.Character
         [SerializeField] private float _cameraMaxZoom = 5f;
 
         private CinemachineThirdPersonFollow _thirdPersonFollow;
-
         #endregion
 
         #region Startup
-
         private void Awake() {
             var component = _virtualCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
             _thirdPersonFollow = component as CinemachineThirdPersonFollow;
@@ -48,11 +45,9 @@ namespace TopdownRPG.Character
             PlayerInputManager.Instance.PlayerControls.ThirdPersonMap.Disable();
             PlayerInputManager.Instance.PlayerControls.ThirdPersonMap.RemoveCallbacks(this);
         }
-
         #endregion
 
         #region Update Logic
-
         private void Update() {
             float newDistance = _thirdPersonFollow.CameraDistance + ScrollInput.y;
             _thirdPersonFollow.CameraDistance = Mathf.Clamp(newDistance, _cameraMinZoom, _cameraMaxZoom);
@@ -61,11 +56,9 @@ namespace TopdownRPG.Character
         private void LateUpdate() {
             ScrollInput = Vector2.zero;
         }
-
         #endregion
 
         #region Input Callback
-
         public void OnScrollCamera(InputAction.CallbackContext context) {
             if (!context.performed)
                 return;
@@ -73,7 +66,6 @@ namespace TopdownRPG.Character
             Vector2 scrollInput = context.ReadValue<Vector2>();
             ScrollInput = -1f * scrollInput * _cameraZoomSpeed;
         }
-
         #endregion
     }
 }

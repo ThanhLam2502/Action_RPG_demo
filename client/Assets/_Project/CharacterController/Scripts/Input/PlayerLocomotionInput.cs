@@ -1,16 +1,82 @@
+using _Project.CharactorController;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+namespace TopdownRPG.Character
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [DefaultExecutionOrder(-2)]
+    public class PlayerLocomotionInput : MonoBehaviour, PlayerControls.IPlayerLocomotionMapActions
     {
-        
-    }
+        #region Class Variable
+        [SerializeField] private bool holdToSprint = true;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public Vector2 MovementInput { get; private set; }
+        public Vector2 LookInput { get; private set; }
+
+        public bool SprintToggleOn { get; private set; }
+        public bool JumpPressed { get; private set; }
+        public bool WalkToggledOn { get; private set; }
+        #endregion
+
+        #region Startup
+        private void OnEnable() {
+            if (PlayerInputManager.Instance?.PlayerControls == null) {
+                Debug.LogError("Player controls is not initialized - cannot enable");
+                return;
+            }
+
+            PlayerInputManager.Instance.PlayerControls.PlayerLocomotionMap.Enable();
+            PlayerInputManager.Instance.PlayerControls.PlayerLocomotionMap.SetCallbacks(this);
+        }
+
+        private void OnDisable() {
+            if (PlayerInputManager.Instance?.PlayerControls == null) {
+                Debug.LogError("Player controls is not initialized - cannot disable");
+                return;
+            }
+
+            PlayerInputManager.Instance.PlayerControls.PlayerLocomotionMap.Disable();
+            PlayerInputManager.Instance.PlayerControls.PlayerLocomotionMap.RemoveCallbacks(this);
+        }
+        #endregion
+
+        #region Late Update Logic
+        private void LateUpdate() {
+            JumpPressed = false;
+        }
+        #endregion
+
+        #region Input Callback
+        public void OnMovement(InputAction.CallbackContext context) {
+            MovementInput = context.ReadValue<Vector2>();
+            // print($"Movement Input: {MovementInput}");
+        }
+
+        public void OnLook(InputAction.CallbackContext context) {
+            LookInput = context.ReadValue<Vector2>();
+            // print($"Look Input: {LookInput}");
+        }
+
+        public void OnToggleSprint(InputAction.CallbackContext context) {
+            if (context.performed) {
+                SprintToggleOn = holdToSprint || !SprintToggleOn;
+            }
+            else if (context.canceled) {
+                SprintToggleOn = !holdToSprint && SprintToggleOn;
+            }
+        }
+
+        public void OnJump(InputAction.CallbackContext context) {
+            if (!context.performed)
+                return;
+            JumpPressed = true;
+        }
+
+        public void OnToggleWalk(InputAction.CallbackContext context) {
+            if (!context.performed)
+                return;
+            WalkToggledOn = !WalkToggledOn;
+        }
+        #endregion
     }
 }
