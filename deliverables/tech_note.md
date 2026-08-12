@@ -3,7 +3,7 @@
 | Topic                | Note                                                                   |
 |:---------------------|:-----------------------------------------------------------------------|
 | Rigidbody            | Điều khiển vị trí vật thể thông qua hệ thống mô phỏng vật lý của Unity |
-| Character Controller | Di chuyển Game Object mà không chịu tác động hay ảnh hưởng vật lý      |
+| Character Controller | Di chuyển Game Object mà không chịu tác động hay ảnh hưởng vật lý |
 | Terrain              |                                                                        |
 | ScriptableObject     |                                                                        |
 
@@ -106,7 +106,7 @@ rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
 
 | ForceMode      | Ý nghĩa                                  | Ví dụ           |
 |----------------|------------------------------------------|-----------------|
-| Force          | Tác động lực liên tục (mặc định)         | Xe chạy         |
+| Force          | Tác động lực liên tục (mặc định)       | Xe chạy         |
 | Acceleration   | Giống Force nhưng bỏ qua Mass            | Gió             |
 | Impulse        | Tác động lực tức thời                    | Nhảy            |
 | VelocityChange | Thay đổi trực tiếp Velocity, bỏ qua Mass | Dash, Knockback |
@@ -150,9 +150,42 @@ Best Practice
 
 ### Khái niệm
 
+Là một component của Unity dùng để điều khiển nhân vật thông qua kinematic character movement,
+thay vì mô phỏng nhân vật như một vật thể vật lý bằng Rigidbody.
+
+CharacterController phù hợp với các nhân vật cần movement được kiểm soát trực tiếp, thay vì chuyển động vật lý tự nhiên.
+
 ### Mục đích
 
+Dùng CharacterController để xây dựng movement cho character mà lập trình viên muốn kiểm soát trực tiếp tốc độ và hướng di chuyển.
+
+Ví dụ:
+
+```csharp
+Vector3 movement = direction * speed;
+_characterController.Move(movement * Time.deltaTime);
+
+```
+
+Thay vì để Physics Engine quyết định chuyển động thông qua:
+rb.AddForce(...);
+
+Vì vậy, Character Controller thường phù hợp với:
+
+- Player character.
+- Enemy character.
+- NPC.
+- Các nhân vật cần movement ổn định, dễ kiểm soát.
+
 ### Khi nào nên sử dụng
+
+Nên sử dụng khi:
+
+- Character cần movement chính xác và predictable.
+- Không cần tương tác vật lý phức tạp với các Rigidbody.
+- Cần xử lý movement, slope, step và ground bằng gameplay code.
+- Muốn tự kiểm soát gravity, jump, acceleration, movement speed,...
+
 
 ### Cách sử dụng
 
