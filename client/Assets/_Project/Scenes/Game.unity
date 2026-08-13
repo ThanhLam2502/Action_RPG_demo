@@ -454,6 +454,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PT_Caesars_Mushroom
       objectReference: {fileID: 0}
+    - target: {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6360628377774826359, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -1263,7 +1267,7 @@ MonoBehaviour:
   _interactionPoint: {fileID: 28844960}
   _interactionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!1 &2086219800
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,7 +57,8 @@ namespace TopdownRPG.Character
                 || _playerState.CurrentPlayerMovementState == PlayerMovementState.Jumping
                 || _playerState.CurrentPlayerMovementState == PlayerMovementState.Falling)
             {
-                IsGathering = false;
+                // IsGathering = false;
+                HandleGatherFinish();
             }
         }
 
@@ -97,8 +98,10 @@ namespace TopdownRPG.Character
             if (_currentInteractable == null)
                 return;
 
-            _currentInteractable.Interact(gameObject);
-            _currentInteractable = null;
+            if (_currentInteractable.Interact(gameObject))
+            {
+                _currentInteractable = null;
+            }
         }
 
         public void HandleGatherStart()

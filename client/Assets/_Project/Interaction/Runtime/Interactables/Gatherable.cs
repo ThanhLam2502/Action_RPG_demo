@@ -8,9 +8,9 @@ namespace TopdownRPG.Interaction
         public string InteractableName => gameObject.name;
         public bool Interact(GameObject interactor)
         {
-            var PlayerInteract = interactor.GetComponent<PlayerInteract>();
+            var playerInteract = interactor.GetComponent<PlayerInteract>();
             Debug.Log($"Gather {gameObject.name}");
-            PlayerInteract.HandleGatherStart();
+            playerInteract.HandleGatherStart();
             return true;
         }
     }
