@@ -19,8 +19,9 @@ namespace TopdownRPG.Character
         }
 
         public void OnGatherFinished()
+        
         {
-            _playerActionsInput.SetGatherPressedFalse();
+            _playerInteract.HandleGatherFinish();
         }
     }
 }

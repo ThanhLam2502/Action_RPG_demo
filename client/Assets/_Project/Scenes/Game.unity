@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &28844959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 28844960}
+  m_Layer: 6
+  m_Name: InteractionPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &28844960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28844959}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.302, z: 0.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 377209406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &248281763
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,11 +241,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 392196454626814698, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 28844960}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2310633935779414326, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2065590543}
+      addedObject: {fileID: 2065590551}
   m_SourcePrefab: {fileID: 100100000, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
 --- !u!4 &377209406 stripped
 Transform:
@@ -1211,7 +1245,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2310633935779414326, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
   m_PrefabInstance: {fileID: 377209405}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2065590543
+--- !u!114 &2065590551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1223,7 +1257,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fffb166f8260c94ca3383e3fc8c33a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TopdownRPG.Character.PlayerInteract
-  _interactionRadius: 2
+  _numFound: 3
+  _scanInterval: 0.1
+  _interactionRadius: 0.35
+  _interactionPoint: {fileID: 28844960}
+  _interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &2086219800
 GameObject:
   m_ObjectHideFlags: 0

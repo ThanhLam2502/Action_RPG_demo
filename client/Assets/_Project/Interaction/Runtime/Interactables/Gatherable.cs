@@ -1,17 +1,17 @@
+using TopdownRPG.Character;
 using UnityEngine;
 
 namespace TopdownRPG.Interaction
 {
     public class Gatherable : MonoBehaviour, IInteractable
     {
-        public void Interact(GameObject interactor) {
-            Debug.Log($"Gather {gameObject.name}");
-        }
-        
-        public void FinishGather()
+        public string InteractableName => gameObject.name;
+        public bool Interact(GameObject interactor)
         {
-            Debug.Log($"Finish Gather {gameObject.name}");
-            Destroy(gameObject);
+            var PlayerInteract = interactor.GetComponent<PlayerInteract>();
+            Debug.Log($"Gather {gameObject.name}");
+            PlayerInteract.HandleGatherStart();
+            return true;
         }
     }
 }

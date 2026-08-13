@@ -9,10 +9,11 @@ namespace TopdownRPG.Character
         [SerializeField] private Animator _animator;
         [SerializeField] private float locomotionBlendSpeed = 0.2f;
 
-        private PlayerLocomotionInput _playerLocomotionInput;
         private PlayerState _playerState;
+        private PlayerInteract _playerInteract;
         private PlayerController _playerController;
         private PlayerActionsInput _playerActionsInput;
+        private PlayerLocomotionInput _playerLocomotionInput;
 
         // Locomotion
         private static int inputXHash = Animator.StringToHash("inputX");
@@ -40,10 +41,11 @@ namespace TopdownRPG.Character
 
         private void Awake()
         {
-            _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
             _playerState = GetComponent<PlayerState>();
+            _playerInteract = GetComponent<PlayerInteract>();
             _playerController = GetComponent<PlayerController>();
             _playerActionsInput = GetComponent<PlayerActionsInput>();
+            _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
 
             actionHashes = new int[] { isGatheringHash };
         }
@@ -76,7 +78,7 @@ namespace TopdownRPG.Character
             _animator.SetBool(isJumpingHash, isJumping);
             _animator.SetBool(isRotatingToTargetHash, _playerController.IsRotatingToTarget);
             _animator.SetBool(isAttackingHash, _playerActionsInput.AttackPressed);
-            _animator.SetBool(isGatheringHash, _playerActionsInput.GatherPressed);
+            _animator.SetBool(isGatheringHash, _playerInteract.IsGathering);
             _animator.SetBool(isPlayingActionHash, isPlayingAction);
 
             _animator.SetFloat(inputXHash, _currentBlendInput.x);

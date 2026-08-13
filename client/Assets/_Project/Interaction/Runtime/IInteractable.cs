@@ -4,6 +4,7 @@ namespace TopdownRPG.Interaction
 {
     public interface IInteractable
     {
-        public void Interact(GameObject interactor);
+        public string InteractableName { get; }
+        public bool Interact(GameObject interactor);
     }
 }
