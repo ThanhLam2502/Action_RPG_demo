@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.5803922, g: 0.8235295, b: 0.8431373, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.002
+  m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -166,7 +166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 392196454626814698, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.85
+      value: 24.63
       objectReference: {fileID: 0}
     - target: {fileID: 392196454626814698, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
       propertyPath: m_LocalPosition.z
@@ -204,10 +204,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThirdPersonController
       objectReference: {fileID: 0}
+    - target: {fileID: 3225724927237557930, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      propertyPath: m_Radius
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2310633935779414326, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2065590543}
   m_SourcePrefab: {fileID: 100100000, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
 --- !u!4 &377209406 stripped
 Transform:
@@ -415,11 +422,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6360628377774826359, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6360628377774826359, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360628377774826359, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6360628377774826359, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -427,7 +438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6360628377774826359, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.410753
+      value: 23.335
       objectReference: {fileID: 0}
     - target: {fileID: 6360628377774826359, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -468,6 +479,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 703106941}
+    - targetCorrespondingSourceObject: {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 703106944}
   m_SourcePrefab: {fileID: 100100000, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
 --- !u!1 &642419303 stripped
 GameObject:
@@ -531,10 +545,22 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.17706703
+  m_Radius: 0.25
   m_Height: 0.2859373
   m_Direction: 1
-  m_Center: {x: -0.002418138, y: 0.2, z: 0.0038491488}
+  m_Center: {x: -0.002418138, y: 0.1, z: 0.0038491488}
+--- !u!114 &703106944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703106939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c6687001e89c5488bbfa801105934e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TopdownRPG.Interaction.Gatherable
 --- !u!1 &705122031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1206,24 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1378153183}
   m_SourcePrefab: {fileID: 100100000, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
+--- !u!1 &2065590535 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2310633935779414326, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+  m_PrefabInstance: {fileID: 377209405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2065590543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065590535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fffb166f8260c94ca3383e3fc8c33a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TopdownRPG.Character.PlayerInteract
+  _interactionRadius: 2
 --- !u!1 &2086219800
 GameObject:
   m_ObjectHideFlags: 0

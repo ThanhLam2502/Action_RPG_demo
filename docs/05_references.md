@@ -14,4 +14,7 @@
 - Place item: https://www.youtube.com/watch?v=CYk1mEcvhqQ
 - Day & Light: https://www.youtube.com/watch?v=Mgb4b_oZ7yk
 
+- Interact: https://discussions.unity.com/t/shake-hands-open-door-ride-vehicle-multi-character-interactions/934928/4
+- Input system: https://www.youtube.com/watch?v=1b7H203kBVg
+
 - asset: https://kenney.nl/assets

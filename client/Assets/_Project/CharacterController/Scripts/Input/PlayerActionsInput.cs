@@ -12,6 +12,7 @@ namespace TopdownRPG.Character
         #region Class Variable
         public bool AttackPressed { get; private set; }
         public bool GatherPressed { get; private set; }
+        public event Action GatherPerformed;
 
         private PlayerLocomotionInput _playerLocomotionInput;
         private PlayerState _playerState;
@@ -52,6 +53,10 @@ namespace TopdownRPG.Character
                 GatherPressed = false;
             }
         }
+        
+        public void SetGatherPressedTrue() {
+            GatherPressed = true;
+        }
 
         public void SetGatherPressedFalse() {
             GatherPressed = false;
@@ -66,14 +71,14 @@ namespace TopdownRPG.Character
         public void OnAttack(InputAction.CallbackContext context) {
             if (!context.performed)
                 return;
-
             AttackPressed = true;
         }
 
         public void OnGather(InputAction.CallbackContext context) {
             if (!context.performed)
                 return;
-            GatherPressed = true;
+            
+            GatherPerformed?.Invoke();
         }
         #endregion
     }
