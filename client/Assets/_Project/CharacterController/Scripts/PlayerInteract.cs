@@ -12,6 +12,7 @@ namespace TopdownRPG.Character
         [SerializeField] private float _interactionRadius = 0.2f;
         [SerializeField] private Transform _interactionPoint;
         [SerializeField] private LayerMask _interactionLayer;
+        [SerializeField] private GameObject _interactionUIPanel;
 
         public bool IsGathering { get; private set; }
 
@@ -58,6 +59,13 @@ namespace TopdownRPG.Character
 
             _scanTimer = _scanInterval;
             FindCurrentInteractable();
+            
+            // show Interact Promt UI
+            if (_interactionUIPanel == null)
+                return;
+            bool shouldShow = _currentInteractable != null;
+            if (_interactionUIPanel.activeSelf != shouldShow)
+                _interactionUIPanel.SetActive(shouldShow);
         }
 
         private void FindCurrentInteractable() {
@@ -98,7 +106,6 @@ namespace TopdownRPG.Character
 
         private void CancelGathering() {
             IsGathering = false;
-            _currentInteractable = null;
         }
 
         public void CompleteGathering() {
