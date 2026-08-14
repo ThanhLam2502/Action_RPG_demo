@@ -1487,6 +1487,7 @@ GameObject:
   - component: {fileID: 5191636941911902735}
   - component: {fileID: 5262137119339461675}
   - component: {fileID: 8078696395105740302}
+  - component: {fileID: 8318859750219932831}
   m_Layer: 6
   m_Name: ThirdPersonController
   m_TagString: Untagged
@@ -1509,6 +1510,7 @@ Transform:
   m_Children:
   - {fileID: 4223048525053651685}
   - {fileID: 8562807720366377967}
+  - {fileID: 8660610689927494540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &3225724927237557930
@@ -1530,7 +1532,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.25
+  m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.01
@@ -1638,6 +1640,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67371a07262fbb04e950d49ac43fd6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TopdownRPG.Character.PlayerActionsInput
+--- !u!114 &8318859750219932831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2310633935779414326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fffb166f8260c94ca3383e3fc8c33a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TopdownRPG.Character.PlayerInteract
+  _numFound: 3
+  _scanInterval: 0.1
+  _interactionRadius: 0.35
+  _interactionPoint: {fileID: 8660610689927494540}
+  _interactionLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &2381342772864390985
 GameObject:
   m_ObjectHideFlags: 0
@@ -4923,6 +4944,37 @@ Transform:
   - {fileID: 4761624998068185780}
   m_Father: {fileID: 9208362662364416068}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6379089271983413955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8660610689927494540}
+  m_Layer: 6
+  m_Name: InteractionPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8660610689927494540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6379089271983413955}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.302, z: 0.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 392196454626814698}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6586177026381797075
 GameObject:
   m_ObjectHideFlags: 0
@@ -6440,7 +6492,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8349560189775437051}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb4ccb9a195a56a4ca345deb47d8411d, type: 3}
   m_Name: 

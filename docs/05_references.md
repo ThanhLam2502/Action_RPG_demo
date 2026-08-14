@@ -16,5 +16,7 @@
 
 - Interact: https://discussions.unity.com/t/shake-hands-open-door-ride-vehicle-multi-character-interactions/934928/4
 - Input system: https://www.youtube.com/watch?v=1b7H203kBVg
+- Combat system: https://www.youtube.com/watch?v=oyJN53HjExg
+
 
 - asset: https://kenney.nl/assets
