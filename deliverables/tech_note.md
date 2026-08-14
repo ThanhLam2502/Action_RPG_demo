@@ -4,8 +4,8 @@
 |:-----------------------|:------------------------------------------------------------------------------------------------------------|
 | Rigidbody              | Điều khiển vị trí vật thể thông qua hệ thống mô phỏng vật lý của Unity                                      |
 | Character Controller   | Di chuyển Game Object mà không chịu tác động hay ảnh hưởng vật lý                                           |
-| Terrain                | Xây dựng địa hình                                                                                           |
-| ScriptableObject       |                                                                                                             |
+| Terrain                | Xây dựng và quản lý địa hình                                                                                |
+| ScriptableObject       | Dùng để lưu trữ data độc lập -- <chưa tìm hiểu sâu>                                                         |
 | C# event               | Sử dụng event để truyền dữ liệu khi có sự kiện xảy ra (dùng nội bộ)                                         |
 | Cinemachine            | Package có sẵn để xử lý camera (rất ttootscho xử lý góc nhìn thứ 3)                                         |
 | Unity trigger collider | method có sẵn để xử lý va chạm (enter or leave zone)                                                        |
