@@ -336,6 +336,16 @@ namespace _Project.CharactorController
             ""id"": ""975c5c89-1249-4b5a-8ecc-34e10f277f58"",
             ""actions"": [
                 {
+                    ""name"": ""DrawWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""92675aae-d23e-4ee2-9238-e80dc7a2bdde"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""7f849db9-a3e7-466c-96c4-b30eb7becd7b"",
@@ -378,6 +388,17 @@ namespace _Project.CharactorController
                     ""action"": ""Gather"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0298d3fb-79c1-499c-98ee-b33150efb8c8"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DrawWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -396,6 +417,7 @@ namespace _Project.CharactorController
             m_ThirdPersonMap_ScrollCamera = m_ThirdPersonMap.FindAction("ScrollCamera", throwIfNotFound: true);
             // PlayerActionMap
             m_PlayerActionMap = asset.FindActionMap("PlayerActionMap", throwIfNotFound: true);
+            m_PlayerActionMap_DrawWeapon = m_PlayerActionMap.FindAction("DrawWeapon", throwIfNotFound: true);
             m_PlayerActionMap_Attack = m_PlayerActionMap.FindAction("Attack", throwIfNotFound: true);
             m_PlayerActionMap_Gather = m_PlayerActionMap.FindAction("Gather", throwIfNotFound: true);
         }
@@ -716,6 +738,7 @@ namespace _Project.CharactorController
         // PlayerActionMap
         private readonly InputActionMap m_PlayerActionMap;
         private List<IPlayerActionMapActions> m_PlayerActionMapActionsCallbackInterfaces = new List<IPlayerActionMapActions>();
+        private readonly InputAction m_PlayerActionMap_DrawWeapon;
         private readonly InputAction m_PlayerActionMap_Attack;
         private readonly InputAction m_PlayerActionMap_Gather;
         /// <summary>
@@ -729,6 +752,10 @@ namespace _Project.CharactorController
             /// Construct a new instance of the input action map wrapper class.
             /// </summary>
             public PlayerActionMapActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerActionMap/DrawWeapon".
+            /// </summary>
+            public InputAction @DrawWeapon => m_Wrapper.m_PlayerActionMap_DrawWeapon;
             /// <summary>
             /// Provides access to the underlying input action "PlayerActionMap/Attack".
             /// </summary>
@@ -763,6 +790,9 @@ namespace _Project.CharactorController
             {
                 if (instance == null || m_Wrapper.m_PlayerActionMapActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_PlayerActionMapActionsCallbackInterfaces.Add(instance);
+                @DrawWeapon.started += instance.OnDrawWeapon;
+                @DrawWeapon.performed += instance.OnDrawWeapon;
+                @DrawWeapon.canceled += instance.OnDrawWeapon;
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
@@ -780,6 +810,9 @@ namespace _Project.CharactorController
             /// <seealso cref="PlayerActionMapActions" />
             private void UnregisterCallbacks(IPlayerActionMapActions instance)
             {
+                @DrawWeapon.started -= instance.OnDrawWeapon;
+                @DrawWeapon.performed -= instance.OnDrawWeapon;
+                @DrawWeapon.canceled -= instance.OnDrawWeapon;
                 @Attack.started -= instance.OnAttack;
                 @Attack.performed -= instance.OnAttack;
                 @Attack.canceled -= instance.OnAttack;
@@ -884,6 +917,13 @@ namespace _Project.CharactorController
         /// <seealso cref="PlayerActionMapActions.RemoveCallbacks(IPlayerActionMapActions)" />
         public interface IPlayerActionMapActions
         {
+            /// <summary>
+            /// Method invoked when associated input action "DrawWeapon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnDrawWeapon(InputAction.CallbackContext context);
             /// <summary>
             /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>

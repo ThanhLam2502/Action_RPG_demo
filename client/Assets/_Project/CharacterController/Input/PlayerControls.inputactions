@@ -248,6 +248,16 @@
             "id": "975c5c89-1249-4b5a-8ecc-34e10f277f58",
             "actions": [
                 {
+                    "name": "DrawWeapon",
+                    "type": "Button",
+                    "id": "92675aae-d23e-4ee2-9238-e80dc7a2bdde",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
                     "name": "Attack",
                     "type": "Button",
                     "id": "7f849db9-a3e7-466c-96c4-b30eb7becd7b",
@@ -288,6 +298,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Gather",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0298d3fb-79c1-499c-98ee-b33150efb8c8",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DrawWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

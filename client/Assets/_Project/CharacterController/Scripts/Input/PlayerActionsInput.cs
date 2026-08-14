@@ -42,6 +42,11 @@ namespace TopdownRPG.Character
         #endregion
 
         #region Input Callback
+        public void OnDrawWeapon(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
         public void OnAttack(InputAction.CallbackContext context) {
             if (!context.performed)
                 return;

@@ -6,7 +6,7 @@ namespace TopdownRPG.Character
     {
         private PlayerActionsInput _playerActionsInput;
         private PlayerInteract _playerInteract;
-        
+
         private void Awake()
         {
             _playerActionsInput = GetComponentInParent<PlayerActionsInput>();
@@ -21,6 +21,18 @@ namespace TopdownRPG.Character
         public void OnGatherFinished()
         {
             _playerInteract.CompleteGathering();
+        }
+
+        protected virtual void WeaponSwitch()
+        {
+        }
+
+        protected virtual void FootL()
+        {
+        }
+
+        protected virtual void FootR()
+        {
         }
     }
 }

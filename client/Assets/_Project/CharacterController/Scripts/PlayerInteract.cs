@@ -60,7 +60,7 @@ namespace TopdownRPG.Character
             _scanTimer = _scanInterval;
             FindCurrentInteractable();
             
-            // show Interact Promt UI
+            // show Interact Prompt UI
             if (_interactionUIPanel == null)
                 return;
             bool shouldShow = _currentInteractable != null;
