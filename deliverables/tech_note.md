@@ -1,18 +1,28 @@
 # Tech Notes
 
-| Topic                | Note                                                                   |
-|:---------------------|:-----------------------------------------------------------------------|
-| Rigidbody            | Điều khiển vị trí vật thể thông qua hệ thống mô phỏng vật lý của Unity |
-| Character Controller | Di chuyển Game Object mà không chịu tác động hay ảnh hưởng vật lý |
-| Terrain              |                                                                        |
-| ScriptableObject     |                                                                        |
+| Topic                  | Note                                                                                                        |
+|:-----------------------|:------------------------------------------------------------------------------------------------------------|
+| Rigidbody              | Điều khiển vị trí vật thể thông qua hệ thống mô phỏng vật lý của Unity                                      |
+| Character Controller   | Di chuyển Game Object mà không chịu tác động hay ảnh hưởng vật lý                                           |
+| Terrain                | Xây dựng địa hình                                                                                           |
+| ScriptableObject       |                                                                                                             |
+| C# event               | Sử dụng event để truyền dữ liệu khi có sự kiện xảy ra (dùng nội bộ)                                         |
+| Cinemachine            | Package có sẵn để xử lý camera (rất ttootscho xử lý góc nhìn thứ 3)                                         |
+| Unity trigger collider | method có sẵn để xử lý va chạm (enter or leave zone)                                                        |
+| Physics.OverlapSphere  | cách xử lý kiểm tra va chạm (colider) dựa trên radius                                                       |
+| State Pattern          | Xử lý lập trình theo hướng state (tại mỗi thời điểm trong nhóm trạng thái chỉ có 1 state active)            |
+| Polling Object         | Kỹ thuật lập trình tái sử dụng đối tương                                                                    |
+| Singleton Pattern      | Giữ 1 instance tồn tại duy nhất                                                                             |
+| ActionsInput           | Kỹ thuật của unity để lắng nghe Input thay vì theo cách truyền thống Check Key Binding từ Update            |
+| Dependency Injection   | Kỹ thuật inject dependency từ bên ngoài, thường thông qua interface; thường sử dụng DI Container để quản lý |
+| Interface              | Khỏi tạo contract để những đối tượng sử dụng đều phai triển khai nó (dung phối hợp tối với DJ)              |
 
 ## Rigidbody
 
 ### Khái niệm
 
-Là một component của Unity giúp **GameObject tham gia vào hệ thống Physics Engine**, cho phép GameObject chịu tác
-động của các quy luật vật lý như **lực, trọng lực, va chạm,..**
+Là một component của Unity giúp **GameObject tham gia vào hệ thống Physics Engine**, cho phép GameObject chịu tác động của các quy luật vật
+lý như **lực, trọng lực, va chạm,..**
 
 Khi có Rigidbody, Unity sẽ tự mô phỏng các yếu tố vật lý như:
 
@@ -106,7 +116,7 @@ rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
 
 | ForceMode      | Ý nghĩa                                  | Ví dụ           |
 |----------------|------------------------------------------|-----------------|
-| Force          | Tác động lực liên tục (mặc định)       | Xe chạy         |
+| Force          | Tác động lực liên tục (mặc định)         | Xe chạy         |
 | Acceleration   | Giống Force nhưng bỏ qua Mass            | Gió             |
 | Impulse        | Tác động lực tức thời                    | Nhảy            |
 | VelocityChange | Thay đổi trực tiếp Velocity, bỏ qua Mass | Dash, Knockback |
@@ -150,8 +160,8 @@ Best Practice
 
 ### Khái niệm
 
-Là một component của Unity dùng để điều khiển nhân vật thông qua kinematic character movement,
-thay vì mô phỏng nhân vật như một vật thể vật lý bằng Rigidbody.
+Là một component của Unity dùng để điều khiển nhân vật thông qua kinematic character movement, thay vì mô phỏng nhân vật như một vật thể vật lý bằng
+Rigidbody.
 
 CharacterController phù hợp với các nhân vật cần movement được kiểm soát trực tiếp, thay vì chuyển động vật lý tự nhiên.
 
@@ -168,7 +178,7 @@ _characterController.Move(movement * Time.deltaTime);
 ```
 
 Thay vì để Physics Engine quyết định chuyển động thông qua:
-rb.AddForce(...);
+rb.AddForce (...);
 
 Vì vậy, Character Controller thường phù hợp với:
 
@@ -185,7 +195,6 @@ Nên sử dụng khi:
 - Không cần tương tác vật lý phức tạp với các Rigidbody.
 - Cần xử lý movement, slope, step và ground bằng gameplay code.
 - Muốn tự kiểm soát gravity, jump, acceleration, movement speed,...
-
 
 ### Cách sử dụng
 
