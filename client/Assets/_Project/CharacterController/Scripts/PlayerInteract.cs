@@ -25,59 +25,55 @@ namespace TopdownRPG.Character
         #endregion
 
         #region Startup
-        private void Awake()
-        {
+        private void Awake() {
             _playerState = GetComponent<PlayerState>();
             _playerActionsInput = GetComponent<PlayerActionsInput>();
             _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
         }
 
-        private void OnEnable()
-        {
+        private void OnEnable() {
             _playerActionsInput.GatherPerformed += HandleGather;
         }
 
-        private void OnDisable()
-        {
+        private void OnDisable() {
             _playerActionsInput.GatherPerformed -= HandleGather;
         }
         #endregion
 
         #region Update Logic
-        private void Update()
-        {
-            _scanTimer -= Time.deltaTime;
-            if (_scanTimer <= 0f)
-            {
-                _scanTimer = _scanInterval;
-                FindCurrentInteractable();
-            }
+        private void Update() {
+            ScanInteractable();
 
             if (_playerLocomotionInput.MovementInput != Vector2.zero
                 || _playerState.CurrentPlayerMovementState == PlayerMovementState.Jumping
-                || _playerState.CurrentPlayerMovementState == PlayerMovementState.Falling)
-            {
-                // IsGathering = false;
-                HandleGatherFinish();
+                || _playerState.CurrentPlayerMovementState == PlayerMovementState.Falling) {
+                CancelGathering();
             }
         }
 
-        private void FindCurrentInteractable()
-        {
+        private void ScanInteractable() {
+            _scanTimer -= Time.deltaTime;
+            if (_scanTimer > 0f)
+                return;
+
+            _scanTimer = _scanInterval;
+            FindCurrentInteractable();
+        }
+
+        private void FindCurrentInteractable() {
             _numFound = Physics.OverlapSphereNonAlloc(_interactionPoint.position, _interactionRadius, _colliders, _interactionLayer);
+
             IInteractable closestInteractable = null;
             float closestDistanceSqr = float.MaxValue;
 
-            for (int i = 0; i < _numFound; i++)
-            {
+            for (int i = 0; i < _numFound; i++) {
                 IInteractable interactable = _colliders[i].GetComponentInParent<IInteractable>();
                 if (interactable == null)
                     continue;
 
                 Vector3 closestPoint = _colliders[i].ClosestPoint(_interactionPoint.position);
                 float distanceSqr = (closestPoint - _interactionPoint.position).sqrMagnitude;
-                if (distanceSqr < closestDistanceSqr)
-                {
+                if (distanceSqr < closestDistanceSqr) {
                     closestDistanceSqr = distanceSqr;
                     closestInteractable = interactable;
                 }
@@ -87,37 +83,35 @@ namespace TopdownRPG.Character
         }
         #endregion
 
-        private void HandleGather()
-        {
-            TryInteract();
-        }
-        
-        
-        private void TryInteract()
-        {
+        private void HandleGather() {
             if (_currentInteractable == null)
                 return;
-
-            if (_currentInteractable.Interact(gameObject))
-            {
-                _currentInteractable = null;
+            // TryInteract
+            if (_currentInteractable.Interact(gameObject)) {
+                StartGathering();
             }
         }
 
-        public void HandleGatherStart()
-        {
+        private void StartGathering() {
             IsGathering = true;
         }
 
-        public void HandleGatherFinish()
-        {
+        private void CancelGathering() {
             IsGathering = false;
+            _currentInteractable = null;
+        }
+
+        public void CompleteGathering() {
+            IsGathering = false;
+            if (_currentInteractable is MonoBehaviour interactable)
+                Destroy(interactable.gameObject);
+
+            _currentInteractable = null;
         }
 
 
         #region Debug
-        private void OnDrawGizmosSelected()
-        {
+        private void OnDrawGizmosSelected() {
             if (!_interactionPoint)
                 return;
 

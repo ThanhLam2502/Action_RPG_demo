@@ -14,10 +14,8 @@ namespace TopdownRPG.Character
         #endregion
 
         #region Startup
-        private void OnEnable()
-        {
-            if (PlayerInputManager.Instance?.PlayerControls == null)
-            {
+        private void OnEnable() {
+            if (PlayerInputManager.Instance?.PlayerControls == null) {
                 Debug.LogError("Player controls is not initialized - cannot enable");
                 return;
             }
@@ -26,10 +24,8 @@ namespace TopdownRPG.Character
             PlayerInputManager.Instance.PlayerControls.PlayerActionMap.SetCallbacks(this);
         }
 
-        private void OnDisable()
-        {
-            if (PlayerInputManager.Instance?.PlayerControls == null)
-            {
+        private void OnDisable() {
+            if (PlayerInputManager.Instance?.PlayerControls == null) {
                 Debug.LogError("Player controls is not initialized - cannot disable");
                 return;
             }
@@ -40,25 +36,22 @@ namespace TopdownRPG.Character
         #endregion
 
         #region Update Logic
-        public void SetAttackPressedFalse()
-        {
+        public void SetAttackPressedFalse() {
             AttackPressed = false;
         }
         #endregion
 
         #region Input Callback
-        public void OnAttack(InputAction.CallbackContext context)
-        {
+        public void OnAttack(InputAction.CallbackContext context) {
             if (!context.performed)
                 return;
             AttackPressed = true;
         }
 
-        public void OnGather(InputAction.CallbackContext context)
-        {
+        public void OnGather(InputAction.CallbackContext context) {
             if (!context.performed)
                 return;
-            print("OnGatheer");
+
             GatherPerformed?.Invoke();
         }
         #endregion
