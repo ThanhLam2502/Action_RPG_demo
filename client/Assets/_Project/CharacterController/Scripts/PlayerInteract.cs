@@ -110,9 +110,11 @@ namespace TopdownRPG.Character
 
         public void CompleteGathering() {
             IsGathering = false;
-            if (_currentInteractable is MonoBehaviour interactable)
+            if (_currentInteractable is MonoBehaviour interactable) {
                 Destroy(interactable.gameObject);
-
+                Debug.Log($"Gather success{gameObject.name}");
+            }
+            
             _currentInteractable = null;
         }
 

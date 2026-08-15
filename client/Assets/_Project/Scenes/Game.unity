@@ -204,17 +204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThirdPersonController
       objectReference: {fileID: 0}
-    - target: {fileID: 8264418970152690981, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2310633935779414326, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
-      insertIndex: 8
-      addedObject: {fileID: 565944341}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
 --- !u!4 &377209406 stripped
 Transform:
@@ -566,23 +559,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 703106944}
   m_SourcePrefab: {fileID: 100100000, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
---- !u!1 &565944332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2310633935779414326, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
-  m_PrefabInstance: {fileID: 377209405}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &565944341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 565944332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a599b680bd9dc594cafb517702ed3f7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TopdownRPG.Character.PlayerCombat
 --- !u!1 &642419303 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5935278547815300987, guid: e05ae677c7b3bc546bd36b488586fb0c, type: 3}
