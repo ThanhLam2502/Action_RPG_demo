@@ -4,7 +4,8 @@ namespace TopdownRPG.Character {
     public class PlayerCombat : MonoBehaviour {
         #region Class Variable
         [SerializeField] private GameObject weapon;
-
+        [SerializeField] private GameObject weaponHolder;
+        
         public bool IsAttacking { get; private set; }
         public bool HasSword { get; private set; } = false;
         public bool IsDrawingWeapon { get; private set; }
@@ -29,6 +30,8 @@ namespace TopdownRPG.Character {
         }
         #endregion
 
+        private Coroutine _attackFinishCoroutine;
+
         private void HandleAttack() {
             if (IsAttacking)
                 return;
@@ -38,7 +41,7 @@ namespace TopdownRPG.Character {
             IsAttacking = true;
         }
 
-        public void OnAttackFinish() {
+        public void OnAttackFinish() {  
             IsAttacking = false;
         }
 
@@ -58,6 +61,7 @@ namespace TopdownRPG.Character {
 
             // Active weapon
             weapon.SetActive(HasSword);
+            weaponHolder.SetActive(!HasSword);
             
             // reset animation state
             IsDrawingWeapon = false;
