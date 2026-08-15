@@ -9,7 +9,8 @@ namespace TopdownRPG.Character
     public class PlayerActionsInput : MonoBehaviour, PlayerControls.IPlayerActionMapActions
     {
         #region Class Variable
-        public bool AttackPressed { get; private set; }
+        public event Action SwitchWeaponPerformed;
+        public event Action AttackPerformed;
         public event Action GatherPerformed;
         #endregion
 
@@ -34,23 +35,21 @@ namespace TopdownRPG.Character
             PlayerInputManager.Instance.PlayerControls.PlayerActionMap.RemoveCallbacks(this);
         }
         #endregion
-
-        #region Update Logic
-        public void SetAttackPressedFalse() {
-            AttackPressed = false;
-        }
-        #endregion
-
+        
         #region Input Callback
         public void OnDrawWeapon(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (!context.performed)
+                return;
+            
+            SwitchWeaponPerformed?.Invoke();
         }
 
         public void OnAttack(InputAction.CallbackContext context) {
             if (!context.performed)
                 return;
-            AttackPressed = true;
+            
+            AttackPerformed?.Invoke();
         }
 
         public void OnGather(InputAction.CallbackContext context) {
