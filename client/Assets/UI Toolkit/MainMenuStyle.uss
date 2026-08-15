@@ -1,0 +1,44 @@
+:root {
+}
+
+.main-menu-button {
+    width: 450px;
+    height: 120px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    font-size: 40px;
+    -unity-font-style: bold;
+    color: rgb(230, 230, 230);
+    border-left-color: rgb(230, 230, 230);
+    border-right-color: rgb(230, 230, 230);
+    border-top-color: rgb(230, 230, 230);
+    border-bottom-color: rgb(230, 230, 230);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.play-button {
+    background-color: rgb(43, 178, 57);
+}
+
+.play-button:hover {
+    background-color: rgb(18, 140, 30);
+}
+
+
+
+.setting-button {
+    background-color: rgb(200, 20, 20);
+}
+
+.setting-button:hover {
+    background-color: rgb(123, 18, 18);
+}

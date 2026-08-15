@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=b0f3e3faa34e4be41b1fe575232ee70a&amp;type=3#MainMenuStyle"/>
+    <ui:VisualElement name="GameBg" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/_Project/Image/game_bg.jpg?fileID=2800000&amp;guid=142f9a3b651e3c549908cded0b74e95d&amp;type=3#game_bg&quot;); align-self: auto; justify-content: center; align-items: center;">
+        <ui:VisualElement name="MainMenuContainer" style="flex-grow: 0; width: 800px; height: 800px; border-left-color: rgba(230, 230, 230, 0.902); border-right-color: rgba(230, 230, 230, 0.902); border-top-color: rgba(230, 230, 230, 0.902); border-bottom-color: rgba(230, 230, 230, 0.902); background-color: rgba(48, 46, 46, 0.902); -unity-background-scale-mode: stretch-to-fill; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+            <ui:Label text="Main Menu" name="MainMenuHeaderLabel" style="font-size: 70px; -unity-text-align: upper-center; color: rgb(255, 245, 238); -unity-font-style: bold;"/>
+            <ui:VisualElement name="Line" style="flex-grow: 0; height: 5px; background-color: rgb(255, 250, 250); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;"/>
+            <ui:GroupBox name="ButtonContainer" style="flex-grow: 1; align-items: center; justify-content: center;">
+                <ui:Button text="Play&#10;" name="PlayButton" class="main-menu-button play-button"/>
+                <ui:Button text="Setting" name="SettingButton" class="main-menu-button play-button setting-button"/>
+            </ui:GroupBox>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
