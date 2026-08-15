@@ -3,11 +3,9 @@ using _Project.CharactorController;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace TopdownRPG.Character
-{
+namespace TopdownRPG.Character {
     [DefaultExecutionOrder(-2)]
-    public class PlayerActionsInput : MonoBehaviour, PlayerControls.IPlayerActionMapActions
-    {
+    public class PlayerActionsInput : MonoBehaviour, PlayerControls.IPlayerActionMapActions {
         #region Class Variable
         public event Action SwitchWeaponPerformed;
         public event Action AttackPerformed;
@@ -47,7 +45,6 @@ namespace TopdownRPG.Character
         public void OnAttack(InputAction.CallbackContext context) {
             if (!context.performed)
                 return;
-
             AttackPerformed?.Invoke();
         }
 

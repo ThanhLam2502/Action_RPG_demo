@@ -1,9 +1,7 @@
 using UnityEngine;
 
-namespace TopdownRPG.Character
-{
-    public class PlayerAnimationEvents : MonoBehaviour
-    {
+namespace TopdownRPG.Character {
+    public class PlayerAnimationEvents : MonoBehaviour {
         private PlayerCombat _playerCombat;
         private PlayerInteract _playerInteract;
 
@@ -16,6 +14,10 @@ namespace TopdownRPG.Character
             _playerCombat.OnSwitchWeapon();
         }
 
+        public void Hit() {
+            _playerCombat.OnAttackFinish();
+        }
+
         public void OnAttackFinished() {
             _playerCombat.OnAttackFinish();
         }
@@ -23,7 +25,7 @@ namespace TopdownRPG.Character
         public void OnGatherFinished() {
             _playerInteract.CompleteGathering();
         }
-        
+
         protected virtual void FootL() {
         }
 

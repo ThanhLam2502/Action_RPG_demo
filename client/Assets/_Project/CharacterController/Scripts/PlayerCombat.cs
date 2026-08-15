@@ -3,8 +3,9 @@ using UnityEngine;
 namespace TopdownRPG.Character {
     public class PlayerCombat : MonoBehaviour {
         #region Class Variable
-        public bool IsAttacking { get; private set; }
+        [SerializeField] private GameObject weapon;
 
+        public bool IsAttacking { get; private set; }
         public bool HasSword { get; private set; } = false;
         public bool IsDrawingWeapon { get; private set; }
         public bool IsSheathingWeapon { get; private set; }
@@ -29,21 +30,12 @@ namespace TopdownRPG.Character {
         #endregion
 
         private void HandleAttack() {
-            // IsAttacking = true;
             if (IsAttacking)
                 return;
-
             if (IsDrawingWeapon || IsSheathingWeapon)
                 return;
 
             IsAttacking = true;
-            if (HasSword) {
-                // Weapon attack
-                // Animator / weapon system xử lý sword attack
-            } else {
-                // Unarmed attack
-                // Animator xử lý punch attack
-            }
         }
 
         public void OnAttackFinish() {
@@ -51,9 +43,6 @@ namespace TopdownRPG.Character {
         }
 
         private void HandleSwitchWeapon() {
-            if (IsAttacking)
-                return;
-
             if (IsDrawingWeapon || IsSheathingWeapon)
                 return;
 
@@ -67,6 +56,9 @@ namespace TopdownRPG.Character {
         public void OnSwitchWeapon() {
             HasSword = !HasSword;
 
+            // Active weapon
+            weapon.SetActive(HasSword);
+            
             // reset animation state
             IsDrawingWeapon = false;
             IsSheathingWeapon = false;

@@ -204,6 +204,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThirdPersonController
       objectReference: {fileID: 0}
+    - target: {fileID: 5339557308834795433, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036086058827475941, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 2132461795}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1315,6 +1323,11 @@ Transform:
   - {fileID: 1085285221}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2132461795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6599222196353391824, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+  m_PrefabInstance: {fileID: 377209405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
