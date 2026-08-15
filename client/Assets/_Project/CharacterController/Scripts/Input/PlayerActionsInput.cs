@@ -35,20 +35,19 @@ namespace TopdownRPG.Character
             PlayerInputManager.Instance.PlayerControls.PlayerActionMap.RemoveCallbacks(this);
         }
         #endregion
-        
+
         #region Input Callback
-        public void OnDrawWeapon(InputAction.CallbackContext context)
-        {
+        public void OnDrawWeapon(InputAction.CallbackContext context) {
             if (!context.performed)
                 return;
-            
+
             SwitchWeaponPerformed?.Invoke();
         }
 
         public void OnAttack(InputAction.CallbackContext context) {
             if (!context.performed)
                 return;
-            
+
             AttackPerformed?.Invoke();
         }
 

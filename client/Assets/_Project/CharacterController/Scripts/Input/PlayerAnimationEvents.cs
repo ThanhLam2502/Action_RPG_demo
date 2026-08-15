@@ -20,12 +20,10 @@ namespace TopdownRPG.Character
             _playerCombat.OnAttackFinish();
         }
 
-
         public void OnGatherFinished() {
             _playerInteract.CompleteGathering();
         }
-
-
+        
         protected virtual void FootL() {
         }
 
