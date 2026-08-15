@@ -4,35 +4,30 @@ namespace TopdownRPG.Character
 {
     public class PlayerAnimationEvents : MonoBehaviour
     {
-        private PlayerActionsInput _playerActionsInput;
+        private PlayerCombat _playerCombat;
         private PlayerInteract _playerInteract;
 
-        private void Awake()
-        {
-            _playerActionsInput = GetComponentInParent<PlayerActionsInput>();
+        private void Awake() {
+            _playerCombat = GetComponentInParent<PlayerCombat>();
             _playerInteract = GetComponentInParent<PlayerInteract>();
         }
 
-        public void OnAttackFinished()
-        {
-            _playerActionsInput.SetAttackPressedFalse();
+        public void WeaponSwitch() {
+            _playerCombat.OnSwitchWeapon();
         }
 
-        public void OnGatherFinished()
-        {
+        public void OnAttackFinished() {
+            _playerCombat.OnAttackFinish();
+        }
+
+        public void OnGatherFinished() {
             _playerInteract.CompleteGathering();
         }
-
-        protected virtual void WeaponSwitch()
-        {
+        
+        protected virtual void FootL() {
         }
 
-        protected virtual void FootL()
-        {
-        }
-
-        protected virtual void FootR()
-        {
+        protected virtual void FootR() {
         }
     }
 }

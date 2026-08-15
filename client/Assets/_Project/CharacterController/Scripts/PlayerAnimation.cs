@@ -10,9 +10,9 @@ namespace TopdownRPG.Character
         [SerializeField] private float locomotionBlendSpeed = 0.2f;
 
         private PlayerState _playerState;
+        private PlayerCombat _playerCombat;
         private PlayerInteract _playerInteract;
         private PlayerController _playerController;
-        private PlayerActionsInput _playerActionsInput;
         private PlayerLocomotionInput _playerLocomotionInput;
 
         // Locomotion
@@ -27,8 +27,11 @@ namespace TopdownRPG.Character
         private static int rotationMismatchHash = Animator.StringToHash("rotationMismatch");
 
         // Actions
-        private static int isAttackingHash = Animator.StringToHash("isAttacking");
+        private static int hasSwordHash = Animator.StringToHash("hasSword");
         private static int isGatheringHash = Animator.StringToHash("isGathering");
+        private static int isAttackingkHash = Animator.StringToHash("isAttacking");
+        private static int isDrawingWeapon = Animator.StringToHash("isDrawingWeapon");
+        private static int isSheathingWeapon = Animator.StringToHash("isSheathingWeapon");
 
         private static int isPlayingActionHash = Animator.StringToHash("isPlayingAction");
         private int[] actionHashes;
@@ -39,24 +42,21 @@ namespace TopdownRPG.Character
         private float _runMaxBlendValue = 1.0f;
         private float _sprintMaxBlendValue = 1.5f;
 
-        private void Awake()
-        {
+        private void Awake() {
             _playerState = GetComponent<PlayerState>();
+            _playerCombat = GetComponent<PlayerCombat>();
             _playerInteract = GetComponent<PlayerInteract>();
             _playerController = GetComponent<PlayerController>();
-            _playerActionsInput = GetComponent<PlayerActionsInput>();
             _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
 
-            actionHashes = new int[] { isGatheringHash };
+            actionHashes = new int[] { isGatheringHash, isDrawingWeapon, isSheathingWeapon };
         }
 
-        private void Update()
-        {
+        private void Update() {
             UpdateAnimationState();
         }
 
-        private void UpdateAnimationState()
-        {
+        private void UpdateAnimationState() {
             bool isIdling = _playerState.CurrentPlayerMovementState == PlayerMovementState.Idling;
             bool isRunning = _playerState.CurrentPlayerMovementState == PlayerMovementState.Running;
             bool isSprinting = _playerState.CurrentPlayerMovementState == PlayerMovementState.Sprinting;
@@ -77,7 +77,14 @@ namespace TopdownRPG.Character
             _animator.SetBool(isFallingHash, isFalling);
             _animator.SetBool(isJumpingHash, isJumping);
             _animator.SetBool(isRotatingToTargetHash, _playerController.IsRotatingToTarget);
-            _animator.SetBool(isAttackingHash, _playerActionsInput.AttackPressed);
+
+            // Action:
+            // -- Non-cancelable Action
+            _animator.SetBool(hasSwordHash, _playerCombat.HasSword);
+            _animator.SetBool(isDrawingWeapon, _playerCombat.IsDrawingWeapon);
+            _animator.SetBool(isSheathingWeapon, _playerCombat.IsSheathingWeapon);
+            _animator.SetBool(isAttackingkHash, _playerCombat.IsAttacking);
+            // -- Action cancellable
             _animator.SetBool(isGatheringHash, _playerInteract.IsGathering);
             _animator.SetBool(isPlayingActionHash, isPlayingAction);
 
