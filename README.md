@@ -31,6 +31,26 @@ Giai đoạn đầu tập trung xây dựng nền tảng của một Top-down Ac
 
 Sau khi kiến trúc ổn định, dự án sẽ tiếp tục mở rộng sang các hệ thống Home, Economy và Multiplayer.
 
+## Controls
+
+| Key             | Action                                  |
+|-----------------|-----------------------------------------|
+| `W` `A` `S` `D` | Move                                    |
+| `R`             | Equip / Unequip Weapon (Draw / Sheathe) |
+| `E`             | Collect                                 |
+| `Shift`         | Sprint / Run                            |
+| `Ctrl`          | Walk                                    |
+| `Space`         | Jump                                    |
+
+### Gameplay
+
+* **Move:** Sử dụng `WASD` để di chuyển nhân vật.
+* **Equip / Unequip Weapon:** Nhấn `R` để rút hoặc cất vũ khí.
+* **Collect:** Nhấn `E` khi ở gần vật phẩm hoặc đối tượng có thể thu thập.
+* **Sprint:** Giữ `Shift` để chạy nhanh.
+* **Walk:** Giữ `Ctrl` để đi bộ.
+* **Jump:** Nhấn `Space` để nhảy.
+
 # Repository Structure
 
 ```text

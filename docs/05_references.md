@@ -18,6 +18,7 @@
   - https://discussions.unity.com/t/shake-hands-open-door-ride-vehicle-multi-character-interactions/934928/4
   - https://www.youtube.com/watch?v=3ff_EwE1IDo&list=PLG5Njy_Tug4VJDn8xTSmh_lw0yshh7hUx
   - https://www.youtube.com/watch?v=XfcuL2D8JSc
+  - https://www.youtube.com/watch?v=x8hI2GjmIAE
 - Input system: https://www.youtube.com/watch?v=1b7H203kBVg
 - Combat system: https://www.youtube.com/watch?v=oyJN53HjExg
 - Combo system: 
