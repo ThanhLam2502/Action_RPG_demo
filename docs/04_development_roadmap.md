@@ -1,5 +1,8 @@
 # Development Roadmap
 
+- P/s: Dành cho dự án cá nhân. Không phải demo này
+
+
 ## Phase 1
 
 Nền tảng
