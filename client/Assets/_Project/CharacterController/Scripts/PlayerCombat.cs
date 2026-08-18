@@ -40,14 +40,11 @@ namespace TopdownRPG.Character {
         #region Update Logic
         private void Update() {
             if (!IsAttacking && ComboStep > 0 && Time.time >= _comboExpireTime) {
-                ResetCombo();
+                // Reset Combo
+                ComboStep = 0;
             }
         }
         #endregion
-
-        private void ResetCombo() {
-            ComboStep = 0;
-        }
 
         private void TryAttack() {
             // Combo đã hết thời gian → Attack 1
@@ -62,7 +59,6 @@ namespace TopdownRPG.Character {
                 }
             }
 
-            Debug.Log($"ComboStep: {ComboStep}");
             IsAttacking = true;
         }
 
@@ -72,7 +68,7 @@ namespace TopdownRPG.Character {
             }
 
             if (IsAttacking) {
-                Debug.Log($"current step: {ComboStep}");
+                Debug.Log($"Block step: {ComboStep}");
                 return;
             }
 
@@ -80,7 +76,6 @@ namespace TopdownRPG.Character {
         }
 
         public void OnAttackHit() {
-            Debug.Log($"Hit Attack: {ComboStep}");
             // Cho phép bắt đâù trigger mới
             IsAttacking = false;
             // Bắt đầu tính combo từ Hit
@@ -88,7 +83,6 @@ namespace TopdownRPG.Character {
         }
 
         public void OnAttackFinish() {
-            Debug.Log($"Finish: {ComboStep}");
         }
 
         private void HandleSwitchWeapon() {
