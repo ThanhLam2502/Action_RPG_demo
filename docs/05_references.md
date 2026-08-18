@@ -3,7 +3,9 @@
 - Write Readme: https://www.freecodecamp.org/news/how-to-write-a-good-readme-file
 
 - Unity tutorial: https://www.youtube.com/watch?v=nCDGjLRecrs&list=PLYvjPIZvaz-qgLiYNNkJBkdFQfyAmQkAQ
-- Hệ thống điều khiển góc nhìn nhân vật: https://www.youtube.com/watch?v=muAzcpAg3lg&list=PLYvjPIZvaz-o-DIBhiHzSrrau9HKSmeEz
+- Hệ thống điều khiển góc nhìn nhân vật: 
+  - https://www.youtube.com/watch?v=muAzcpAg3lg&list=PLYvjPIZvaz-o-DIBhiHzSrrau9HKSmeEz
+  - Movement: https://www.youtube.com/watch?v=z3dequX5g_E
 - https://www.youtube.com/watch?v=WbZpj8WcjN0
 - Làm game dạo:
   - https://www.youtube.com/@lamgamedao/playlists
@@ -20,14 +22,17 @@
   - https://www.youtube.com/watch?v=XfcuL2D8JSc
   - https://www.youtube.com/watch?v=x8hI2GjmIAE
 - Input system: https://www.youtube.com/watch?v=1b7H203kBVg
-- Combat system: https://www.youtube.com/watch?v=oyJN53HjExg
+- Combat system: 
+  - https://www.youtube.com/watch?v=oyJN53HjExg
+  - https://www.youtube.com/watch?v=HsfzlU7XraY
+- Fighting Game Frame: https://www.youtube.com/watch?v=Dptztdm1rtg 
+
 - Combo system: 
   - https://www.youtube.com/watch?v=gHaJUNiItmQ
   - https://www.youtube.com/watch?v=bjX3Uc02e0g
   - https://github.com/codenameglassy/Unity_FreeflowCombat
 
-- make inventory items:  https://www.youtube.com/watch?v=pmBv0Cagx_o
+- Make inventory items:  https://www.youtube.com/watch?v=pmBv0Cagx_o
 - Learn multiplayer: https://www.youtube.com/watch?v=7glCsF9fv3s&list=PLzDRvYVwl53sSmEcIgZyDzrc0Smpq_9fN
-
 
 - asset: https://kenney.nl/assets

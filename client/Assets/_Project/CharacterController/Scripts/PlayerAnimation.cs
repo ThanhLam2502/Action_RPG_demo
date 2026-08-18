@@ -30,8 +30,9 @@ namespace TopdownRPG.Character
         private static int hasSwordHash = Animator.StringToHash("hasSword");
         private static int isGatheringHash = Animator.StringToHash("isGathering");
         private static int isAttackingkHash = Animator.StringToHash("isAttacking");
-        private static int isDrawingWeapon = Animator.StringToHash("isDrawingWeapon");
-        private static int isSheathingWeapon = Animator.StringToHash("isSheathingWeapon");
+        private static int isDrawingWeaponHash = Animator.StringToHash("isDrawingWeapon");
+        private static int isSheathingWeaponHash = Animator.StringToHash("isSheathingWeapon");
+        private static int comboStepHash = Animator.StringToHash("comboStep");
 
         private static int isPlayingActionHash = Animator.StringToHash("isPlayingAction");
         private int[] actionHashes;
@@ -49,7 +50,7 @@ namespace TopdownRPG.Character
             _playerController = GetComponent<PlayerController>();
             _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
 
-            actionHashes = new int[] { isGatheringHash, isDrawingWeapon, isSheathingWeapon };
+            actionHashes = new int[] { isGatheringHash, isDrawingWeaponHash, isSheathingWeaponHash };
         }
 
         private void Update() {
@@ -81,8 +82,10 @@ namespace TopdownRPG.Character
             // Action:
             // -- Non-cancelable Action
             _animator.SetBool(hasSwordHash, _playerCombat.HasSword);
-            _animator.SetBool(isDrawingWeapon, _playerCombat.IsDrawingWeapon);
-            _animator.SetBool(isSheathingWeapon, _playerCombat.IsSheathingWeapon);
+            _animator.SetBool(isDrawingWeaponHash, _playerCombat.IsDrawingWeapon);
+            _animator.SetBool(isSheathingWeaponHash, _playerCombat.IsSheathingWeapon);
+
+            _animator.SetInteger(comboStepHash, _playerCombat.ComboStep);
             _animator.SetBool(isAttackingkHash, _playerCombat.IsAttacking);
             // -- Action cancellable
             _animator.SetBool(isGatheringHash, _playerInteract.IsGathering);

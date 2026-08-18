@@ -15,10 +15,10 @@ namespace TopdownRPG.Character {
         }
 
         public void Hit() {
-            _playerCombat.OnAttackFinish();
+            _playerCombat.OnAttackHit();
         }
 
-        public void OnAttackFinished() {
+        public void AttackFinished() {
             _playerCombat.OnAttackFinish();
         }
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace TopdownRPG.Character {
@@ -5,12 +6,18 @@ namespace TopdownRPG.Character {
         #region Class Variable
         [SerializeField] private GameObject weapon;
         [SerializeField] private GameObject weaponHolder;
-        
+        [SerializeField] private float comboWindow = 2f;
+
         public bool IsAttacking { get; private set; }
         public bool HasSword { get; private set; } = false;
         public bool IsDrawingWeapon { get; private set; }
+
         public bool IsSheathingWeapon { get; private set; }
 
+        // 0 = Attack 1; 1 = Attack 2; 2 = Attack 3
+        public int ComboStep { get; private set; }
+
+        private float _comboExpireTime;
         private PlayerActionsInput _playerActionsInput;
         #endregion
 
@@ -30,19 +37,58 @@ namespace TopdownRPG.Character {
         }
         #endregion
 
-        private Coroutine _attackFinishCoroutine;
+        #region Update Logic
+        private void Update() {
+            if (!IsAttacking && ComboStep > 0 && Time.time >= _comboExpireTime) {
+                ResetCombo();
+            }
+        }
+        #endregion
 
-        private void HandleAttack() {
-            if (IsAttacking)
-                return;
-            if (IsDrawingWeapon || IsSheathingWeapon)
-                return;
+        private void ResetCombo() {
+            ComboStep = 0;
+        }
 
+        private void TryAttack() {
+            // Combo đã hết thời gian → Attack 1
+            if (ComboStep == 0 || Time.time >= _comboExpireTime) {
+                ComboStep = 1;
+            } else {
+                ComboStep++;
+
+                // Sau Attack 3 -> quay lại Attack 1
+                if (ComboStep > 3) {
+                    ComboStep = 1;
+                }
+            }
+
+            Debug.Log($"ComboStep: {ComboStep}");
             IsAttacking = true;
         }
 
-        public void OnAttackFinish() {  
+        private void HandleAttack() {
+            if (IsDrawingWeapon || IsSheathingWeapon) {
+                return;
+            }
+
+            if (IsAttacking) {
+                Debug.Log($"current step: {ComboStep}");
+                return;
+            }
+
+            TryAttack();
+        }
+
+        public void OnAttackHit() {
+            Debug.Log($"Hit Attack: {ComboStep}");
+            // Cho phép bắt đâù trigger mới
             IsAttacking = false;
+            // Bắt đầu tính combo từ Hit
+            _comboExpireTime = Time.time + comboWindow;
+        }
+
+        public void OnAttackFinish() {
+            Debug.Log($"Finish: {ComboStep}");
         }
 
         private void HandleSwitchWeapon() {
@@ -62,7 +108,7 @@ namespace TopdownRPG.Character {
             // Active weapon
             weapon.SetActive(HasSword);
             weaponHolder.SetActive(!HasSword);
-            
+
             // reset animation state
             IsDrawingWeapon = false;
             IsSheathingWeapon = false;
