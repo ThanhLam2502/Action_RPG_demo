@@ -198,11 +198,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 392196454626814698, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.6
+      value: 25.1
       objectReference: {fileID: 0}
     - target: {fileID: 392196454626814698, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 225.6
+      value: 221.8
       objectReference: {fileID: 0}
     - target: {fileID: 392196454626814698, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
       propertyPath: m_LocalRotation.w
@@ -232,33 +232,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 602837327458256401, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.238
-      objectReference: {fileID: 0}
-    - target: {fileID: 602837327458256401, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.003
-      objectReference: {fileID: 0}
-    - target: {fileID: 602837327458256401, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.149
-      objectReference: {fileID: 0}
     - target: {fileID: 2310633935779414326, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
       propertyPath: m_Name
       value: ThirdPersonController
       objectReference: {fileID: 0}
-    - target: {fileID: 6599222196353391824, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6599222196353391824, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 738991562}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
 --- !u!4 &377209406 stripped
 Transform:
@@ -896,28 +877,6 @@ Terrain:
   m_EnableTreesAndDetailsRayTracing: 0
   m_EnableHeightmapLODFrustumCulling: 1
   m_TreeMotionVectorModeOverride: 3
---- !u!1 &738991558 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6599222196353391824, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
-  m_PrefabInstance: {fileID: 377209405}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &738991562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738991558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b243b1416c78c044a2de66ba24990dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TopdownRPG.Combat.DamageDealer
-  attackPoint: {fileID: 1530841750}
-  attackRange: 0.18
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,11 +1246,6 @@ Transform:
   - {fileID: 705122032}
   m_Father: {fileID: 248281764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1530841750 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 602837327458256401, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
-  m_PrefabInstance: {fileID: 377209405}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1691230025
 GameObject:
   m_ObjectHideFlags: 0

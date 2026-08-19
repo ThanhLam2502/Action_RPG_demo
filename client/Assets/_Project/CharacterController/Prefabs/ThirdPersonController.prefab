@@ -5464,6 +5464,7 @@ GameObject:
   - component: {fileID: 8718464570113353052}
   - component: {fileID: 8801177249068065115}
   - component: {fileID: 5057104147595704689}
+  - component: {fileID: 2670974338885342203}
   m_Layer: 0
   m_Name: 2Hand_Sword
   m_TagString: Untagged
@@ -5544,6 +5545,23 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2670974338885342203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6599222196353391824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b243b1416c78c044a2de66ba24990dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TopdownRPG.Combat.DamageDealer
+  attackPoint: {fileID: 602837327458256401}
+  attackRange: 0.18
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &6715782121514755774
 GameObject:
   m_ObjectHideFlags: 0
@@ -6742,13 +6760,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8027247807294152343}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.74791646, y: -0.041048698, z: 0.662462, w: -0.008951679}
-  m_LocalPosition: {x: -0.363, y: 0.017, z: -0.188}
+  m_LocalRotation: {x: 0.7061378, y: -0.03700707, z: 0.7061378, w: -0.03700707}
+  m_LocalPosition: {x: -0.195, y: 0.003, z: 0.083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8718464570113353052}
-  m_LocalEulerAnglesHint: {x: 2.3500001, y: 97.021, z: 184.20499}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 186}
 --- !u!1 &8089002851691102035
 GameObject:
   m_ObjectHideFlags: 0
