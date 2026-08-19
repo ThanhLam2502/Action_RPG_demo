@@ -1,16 +1,29 @@
+using System;
+using TopdownRPG.Combat;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+public class Enemy : MonoBehaviour, IDamageable {
+    [SerializeField] private float health = 3;
+
+   
+    public GameObject GameObject { get; }
+    
+    private GameObject _player;
+    private Animator _animator;
+
+    private void Start() {
+        _player = GameObject.FindWithTag("Player");
+        _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void TakeDamage(float damage) {
+        health -= damage;
+        if (health <= 0) {
+            Die();
+        }
+    }
+
+    private void Die() {
+        Destroy(gameObject);
     }
 }

@@ -86,7 +86,7 @@ namespace TopdownRPG.Character
             _animator.SetBool(isSheathingWeaponHash, _playerCombat.IsSheathingWeapon);
 
             _animator.SetInteger(comboStepHash, _playerCombat.ComboStep);
-            _animator.SetBool(isAttackingkHash, _playerCombat.IsAttacking);
+            _animator.SetBool(isAttackingkHash, _playerCombat.AttackRequested);
             // -- Action cancellable
             _animator.SetBool(isGatheringHash, _playerInteract.IsGathering);
             _animator.SetBool(isPlayingActionHash, isPlayingAction);

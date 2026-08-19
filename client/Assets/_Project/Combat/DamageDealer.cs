@@ -5,26 +5,28 @@ using UnityEngine;
 namespace TopdownRPG.Combat {
     public class DamageDealer : MonoBehaviour {
         // @formatter:off
-        [Header("Hit Detection")]
+        [Header("Hit Shape")]
         [SerializeField] private Transform attackPoint;
-        [SerializeField] private float attackRange = 1f;
-        [SerializeField] private LayerMask enemyLayer;
+        [SerializeField] private Vector3 boxSize = new(0.5f, 0.5f, 1.5f);
+        
+        [Header("Hit Detection")]
+        [SerializeField] private LayerMask targetMask;
+        
         // @formatter:on
 
-        // [SerializeField] private float weaponLength;
-        // [SerializeField] private float weaponDamage;
         private bool canDealDamage;
-        private List<GameObject> hitTargets;
+        private readonly HashSet<GameObject> hitTargets = new();
+        private readonly Collider[] hitBuffer = new Collider[16];
 
         private void Start() {
             canDealDamage = false;
-            hitTargets = new List<GameObject>();
         }
 
         private void Update() {
             if (!canDealDamage)
                 return;
-            
+
+            CheckHit();
         }
 
         public void StartDealDamage() {
@@ -35,50 +37,35 @@ namespace TopdownRPG.Combat {
         public void EndDealDamage() {
             canDealDamage = false;
         }
-        
-        private void OnTriggerEnter(Collider other)
-        {
-            if (!canDealDamage)
-                return;
 
-            IDamageable damageable = other.GetComponentInParent<IDamageable>();
+        private void CheckHit() {
+            var hitCount = Physics.OverlapBoxNonAlloc(attackPoint.position, boxSize * 0.5f, hitBuffer, attackPoint.rotation, targetMask);
+            Debug.Log($"hitCount: {hitCount}");
+            for (int i = 0; i < hitCount; i++) {
+                Collider hit = hitBuffer[i];
+                IDamageable damageable = hit.GetComponentInParent<IDamageable>();
 
-            if (damageable == null)
-                return;
+                if (damageable == null)
+                    continue;
 
-            GameObject target = damageable.GameObject;
+                GameObject target = damageable.GameObject;
+                if (hitTargets.Contains(target))
+                    continue;
 
-            if (hitTargets.Contains(target))
-                return;
-
-            hitTargets.Add(target);
-            print(hitTargets);
+                hitTargets.Add(target);
+                Debug.Log($"Hit: {target}");
+            }
         }
 
-        // public void CheckHit() {
-        //     Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
-        //     foreach (Collider hit in hits) {
-        //         IDamageable damageable = hit.GetComponentInParent<IDamageable>();
-        //         if (damageable == null)
-        //             continue;
-        //
-        //         GameObject target = damageable.GameObject;
-        //         if (hitTargets.Contains(target))
-        //             continue;
-        //
-        //         hitTargets.Add(target);
-        //     }
-        // }
         //
         // private void OnDrawGizmosSelected() {
-        //     if (attackPoint == null)
-        //         return;
-        //     Gizmos.color = Color.yellow;
-        //     
-        //     Gizmos.matrix = Matrix4x4.TRS(attackPoint.position, attackPoint.rotation, Vector3.one);
-        //     //
-        //     // Gizmos.DrawWireCube(Vector3.forward * attackRange / 2f, boxSize);
-        //     // Gizmos.matrix = Matrix4x4.identity;
-        // }
+        private void OnDrawGizmos() {
+            if (attackPoint == null)
+                return;
+
+            Gizmos.matrix = Matrix4x4.TRS(attackPoint.position, attackPoint.rotation, Vector3.one);
+            Gizmos.color = canDealDamage ? Color.red : Color.yellow;
+            Gizmos.DrawWireCube(Vector3.zero, boxSize);
+        }
     }
 }
