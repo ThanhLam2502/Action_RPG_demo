@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e5c9e6a6a445d144a9bac364d96733f
+guid: 3425561ac595e3c45a2720e042cacec8
 ModelImporter:
   serializedVersion: 24300
   internalIDToNameTable:
@@ -317,9 +317,12 @@ ModelImporter:
     second: RPG-Character-Mesh
   - first:
       1: 100208
-    second: Box001
+    second: Spear
   - first:
       1: 100210
+    second: 2Hand-Sword
+  - first:
+      1: 100212
     second: Exporter
   - first:
       4: 400000
@@ -635,9 +638,12 @@ ModelImporter:
     second: RPG-Character-Mesh
   - first:
       4: 400208
-    second: Box001
+    second: Spear
   - first:
       4: 400210
+    second: 2Hand-Sword
+  - first:
+      4: 400212
     second: Exporter
   - first:
       23: 2300000
@@ -656,7 +662,10 @@ ModelImporter:
     second: USP
   - first:
       23: 2300010
-    second: Box001
+    second: Spear
+  - first:
+      23: 2300012
+    second: 2Hand-Sword
   - first:
       33: 3300000
     second: Mesh_Soldier_A
@@ -674,7 +683,10 @@ ModelImporter:
     second: USP
   - first:
       33: 3300010
-    second: Box001
+    second: Spear
+  - first:
+      33: 3300012
+    second: 2Hand-Sword
   - first:
       43: 4300000
     second: Mesh_Soldier_A
@@ -698,10 +710,13 @@ ModelImporter:
     second: RPG-Character-Mesh
   - first:
       43: 4300014
-    second: Box001
+    second: Spear
+  - first:
+      43: 4300016
+    second: 2Hand-Sword
   - first:
       74: 7400000
-    second: 2Hand-Sword-Attack2
+    second: 2Hand_Sword_Attack3
   - first:
       95: 9500000
     second: //RootNode
@@ -732,10 +747,7 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: Motion
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'B_Spine' has translation animation that
-      will be discarded.\n\t'B_Spine1' has translation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -749,7 +761,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: 2Hand-Sword-Attack2
+      name: 2Hand_Sword_Attack3
       takeName: Take 001
       internalID: 7400000
       firstFrame: 0
@@ -764,7 +776,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
@@ -773,15 +785,8 @@ ModelImporter:
       bodyMask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
       curves: []
       events:
-      - time: 0.39020616
+      - time: 0.38571432
         functionName: Hit
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: AttackFinished
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

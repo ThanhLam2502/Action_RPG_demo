@@ -5,11 +5,11 @@ using UnityEngine;
 namespace TopdownRPG.Combat {
     public class DamageDealer : MonoBehaviour {
         // @formatter:off
-        [Header("Hit Shape")]
+        [SerializeField] private int weaponDamage = 10;
         [SerializeField] private Transform attackPoint;
-        [SerializeField] private Vector3 boxSize = new(0.5f, 0.5f, 1.5f);
         
         [Header("Hit Detection")]
+        [SerializeField] private Vector3 boxSize = new(0.5f, 0.5f, 1.5f);
         [SerializeField] private LayerMask targetMask;
         // @formatter:on
 
@@ -45,17 +45,16 @@ namespace TopdownRPG.Combat {
                 IDamageable damageable = hit.GetComponent<IDamageable>();
                 if (damageable == null)
                     continue;
-                
-                Debug.Log($"Name: {damageable.GameObject.name}");
-                if (hitTargets.Contains(hit.gameObject))
-                    continue;
-                
-                hitTargets.Add(hit.gameObject);
 
-                damageable.TakeDamage(1); // apply damage
+                // hit.transform.TryGetComponent(out IDamageable damageableComponent);
+                // Debug.Log($"Name: {damageable.GameObject.name}");
+                if (!hitTargets.Add(hit.gameObject))
+                    continue;
+
+                damageable.TakeDamage(weaponDamage); // apply damage
             }
         }
-        
+
         // private void OnDrawGizmosSelected() {
         private void OnDrawGizmos() {
             if (attackPoint == null)
