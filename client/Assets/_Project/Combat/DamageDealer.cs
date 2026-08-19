@@ -11,7 +11,6 @@ namespace TopdownRPG.Combat {
         
         [Header("Hit Detection")]
         [SerializeField] private LayerMask targetMask;
-        
         // @formatter:on
 
         private bool canDealDamage;
@@ -40,24 +39,23 @@ namespace TopdownRPG.Combat {
 
         private void CheckHit() {
             var hitCount = Physics.OverlapBoxNonAlloc(attackPoint.position, boxSize * 0.5f, hitBuffer, attackPoint.rotation, targetMask);
-            Debug.Log($"hitCount: {hitCount}");
+
             for (int i = 0; i < hitCount; i++) {
                 Collider hit = hitBuffer[i];
-                IDamageable damageable = hit.GetComponentInParent<IDamageable>();
-
+                IDamageable damageable = hit.GetComponent<IDamageable>();
                 if (damageable == null)
                     continue;
-
-                GameObject target = damageable.GameObject;
-                if (hitTargets.Contains(target))
+                
+                Debug.Log($"Name: {damageable.GameObject.name}");
+                if (hitTargets.Contains(hit.gameObject))
                     continue;
+                
+                hitTargets.Add(hit.gameObject);
 
-                hitTargets.Add(target);
-                Debug.Log($"Hit: {target}");
+                damageable.TakeDamage(1); // apply damage
             }
         }
-
-        //
+        
         // private void OnDrawGizmosSelected() {
         private void OnDrawGizmos() {
             if (attackPoint == null)

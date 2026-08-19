@@ -16,25 +16,25 @@ namespace TopdownRPG.Character
         private PlayerLocomotionInput _playerLocomotionInput;
 
         // Locomotion
-        private static int inputXHash = Animator.StringToHash("inputX");
-        private static int inputYHash = Animator.StringToHash("inputY");
-        private static int inputMagnitudeHash = Animator.StringToHash("inputMagnitude");
-        private static int isIdlingHash = Animator.StringToHash("isIdling");
-        private static int isGrounedHash = Animator.StringToHash("isGrounded");
-        private static int isJumpingHash = Animator.StringToHash("isJumping");
-        private static int isFallingHash = Animator.StringToHash("isFalling");
-        private static int isRotatingToTargetHash = Animator.StringToHash("isRotatingToTarget");
-        private static int rotationMismatchHash = Animator.StringToHash("rotationMismatch");
+        private static readonly int InputXHash = Animator.StringToHash("inputX");
+        private static readonly int InputYHash = Animator.StringToHash("inputY");
+        private static readonly int InputMagnitudeHash = Animator.StringToHash("inputMagnitude");
+        private static readonly int IsIdlingHash = Animator.StringToHash("isIdling");
+        private static readonly int IsGroundedHash = Animator.StringToHash("isGrounded");
+        private static readonly int IsJumpingHash = Animator.StringToHash("isJumping");
+        private static readonly int IsFallingHash = Animator.StringToHash("isFalling");
+        private static readonly int IsRotatingToTargetHash = Animator.StringToHash("isRotatingToTarget");
+        private static readonly int RotationMismatchHash = Animator.StringToHash("rotationMismatch");
 
         // Actions
-        private static int hasSwordHash = Animator.StringToHash("hasSword");
-        private static int isGatheringHash = Animator.StringToHash("isGathering");
-        private static int isAttackingkHash = Animator.StringToHash("isAttacking");
-        private static int isDrawingWeaponHash = Animator.StringToHash("isDrawingWeapon");
-        private static int isSheathingWeaponHash = Animator.StringToHash("isSheathingWeapon");
-        private static int comboStepHash = Animator.StringToHash("comboStep");
+        private static readonly int HasSwordHash = Animator.StringToHash("hasSword");
+        private static readonly int IsGatheringHash = Animator.StringToHash("isGathering");
+        private static readonly int IsAttackingHash = Animator.StringToHash("isAttacking");
+        private static readonly int IsDrawingWeaponHash = Animator.StringToHash("isDrawingWeapon");
+        private static readonly int IsSheathingWeaponHash = Animator.StringToHash("isSheathingWeapon");
+        private static readonly int ComboStepHash = Animator.StringToHash("comboStep");
 
-        private static int isPlayingActionHash = Animator.StringToHash("isPlayingAction");
+        private static readonly int IsPlayingActionHash = Animator.StringToHash("isPlayingAction");
         private int[] actionHashes;
 
         private Vector3 _currentBlendInput = Vector3.zero;
@@ -50,7 +50,7 @@ namespace TopdownRPG.Character
             _playerController = GetComponent<PlayerController>();
             _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
 
-            actionHashes = new int[] { isGatheringHash, isDrawingWeaponHash, isSheathingWeaponHash };
+            actionHashes = new int[] { IsGatheringHash, IsDrawingWeaponHash, IsSheathingWeaponHash };
         }
 
         private void Update() {
@@ -73,28 +73,28 @@ namespace TopdownRPG.Character
                 : _playerLocomotionInput.MovementInput * _walkMaxBlendValue;
             _currentBlendInput = Vector3.Lerp(_currentBlendInput, inputTarget, locomotionBlendSpeed * Time.deltaTime);
 
-            _animator.SetBool(isIdlingHash, isIdling);
-            _animator.SetBool(isGrounedHash, isGrounded);
-            _animator.SetBool(isFallingHash, isFalling);
-            _animator.SetBool(isJumpingHash, isJumping);
-            _animator.SetBool(isRotatingToTargetHash, _playerController.IsRotatingToTarget);
+            _animator.SetBool(IsIdlingHash, isIdling);
+            _animator.SetBool(IsGroundedHash, isGrounded);
+            _animator.SetBool(IsFallingHash, isFalling);
+            _animator.SetBool(IsJumpingHash, isJumping);
+            _animator.SetBool(IsRotatingToTargetHash, _playerController.IsRotatingToTarget);
 
             // Action:
             // -- Non-cancelable Action
-            _animator.SetBool(hasSwordHash, _playerCombat.HasSword);
-            _animator.SetBool(isDrawingWeaponHash, _playerCombat.IsDrawingWeapon);
-            _animator.SetBool(isSheathingWeaponHash, _playerCombat.IsSheathingWeapon);
+            _animator.SetBool(HasSwordHash, _playerCombat.HasSword);
+            _animator.SetBool(IsDrawingWeaponHash, _playerCombat.IsDrawingWeapon);
+            _animator.SetBool(IsSheathingWeaponHash, _playerCombat.IsSheathingWeapon);
 
-            _animator.SetInteger(comboStepHash, _playerCombat.ComboStep);
-            _animator.SetBool(isAttackingkHash, _playerCombat.AttackRequested);
+            _animator.SetInteger(ComboStepHash, _playerCombat.ComboStep);
+            _animator.SetBool(IsAttackingHash, _playerCombat.AttackRequested);
             // -- Action cancellable
-            _animator.SetBool(isGatheringHash, _playerInteract.IsGathering);
-            _animator.SetBool(isPlayingActionHash, isPlayingAction);
+            _animator.SetBool(IsGatheringHash, _playerInteract.IsGathering);
+            _animator.SetBool(IsPlayingActionHash, isPlayingAction);
 
-            _animator.SetFloat(inputXHash, _currentBlendInput.x);
-            _animator.SetFloat(inputYHash, _currentBlendInput.y);
-            _animator.SetFloat(inputMagnitudeHash, _currentBlendInput.magnitude);
-            _animator.SetFloat(rotationMismatchHash, _playerController.RotationMismatch);
+            _animator.SetFloat(InputXHash, _currentBlendInput.x);
+            _animator.SetFloat(InputYHash, _currentBlendInput.y);
+            _animator.SetFloat(InputMagnitudeHash, _currentBlendInput.magnitude);
+            _animator.SetFloat(RotationMismatchHash, _playerController.RotationMismatch);
         }
     }
 }

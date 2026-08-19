@@ -694,6 +694,7 @@ GameObject:
   - component: {fileID: 5585834797445534251}
   - component: {fileID: 4833839756833574521}
   - component: {fileID: 9176579249652214821}
+  - component: {fileID: 6557057881317722246}
   m_Layer: 7
   m_Name: Enemy_Skeleton
   m_TagString: Untagged
@@ -765,6 +766,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &6557057881317722246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305276639864822111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9bd06517f559b4489597cfb8fb0050a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TopdownRPG.Enemy.Enemy
+  health: 3
 --- !u!1 &1358782178713751370
 GameObject:
   m_ObjectHideFlags: 0

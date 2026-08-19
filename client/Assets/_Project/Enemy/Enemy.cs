@@ -2,28 +2,35 @@ using System;
 using TopdownRPG.Combat;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamageable {
-    [SerializeField] private float health = 3;
+namespace TopdownRPG.Enemy {
+    public class Enemy : MonoBehaviour, IDamageable {
+        [SerializeField] private int health = 3;
 
-   
-    public GameObject GameObject { get; }
-    
-    private GameObject _player;
-    private Animator _animator;
+        private static readonly int DamageHash = Animator.StringToHash("damage");
+        private static readonly int IsDeathHash = Animator.StringToHash("isDeath");
+        
+        public GameObject GameObject => gameObject;
+        
+        private GameObject _player;
+        private Animator _animator;
 
-    private void Start() {
-        _player = GameObject.FindWithTag("Player");
-        _animator = GetComponent<Animator>();
-    }
-
-    public void TakeDamage(float damage) {
-        health -= damage;
-        if (health <= 0) {
-            Die();
+        private void Start() {
+            _player = GameObject.FindWithTag("Player");
+            _animator = GetComponent<Animator>();
         }
-    }
 
-    private void Die() {
-        Destroy(gameObject);
+        public void TakeDamage(int damage) {
+            health -= damage;
+            _animator.SetTrigger(DamageHash);
+
+            if (health <= 0) {
+                Die();
+            }
+        }
+
+        private void Die() {
+            _animator.SetBool(IsDeathHash, true);
+            Destroy(gameObject, 2f);
+        }
     }
 }
