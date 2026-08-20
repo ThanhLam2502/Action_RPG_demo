@@ -44,25 +44,31 @@ namespace TopdownRPG.Enemy {
             }
 
             _animator.SetFloat(SpeedHash, _navMeshAgent.velocity.magnitude / _navMeshAgent.speed);
-            if (_timePassed >= attackCd) {
-                if (Vector3.Distance(_player.transform.position, transform.position) <= attackRange) {
-                    _animator.SetTrigger(AttackHash);
-                    _timePassed = 0;
-                }
+            if (_timePassed >= attackCd && Vector3.Distance(_player.transform.position, transform.position) <= attackRange) {
+                _animator.SetTrigger(AttackHash);
+                _timePassed = 0;
             }
 
             _timePassed += Time.deltaTime;
 
             if (_newDestinationCd <= 0 && Vector3.Distance(_player.transform.position, transform.position) <= aggroRange) {
-                _newDestinationCd = 0.5f;
                 _navMeshAgent.SetDestination(_player.transform.position);
             }
 
             _newDestinationCd -= Time.deltaTime;
             transform.LookAt(_player.transform);
         }
+        
+        private void OnAttackHit() {
+            GetComponentInChildren<EnemyDamageDealer>().StartDealDamage();
+        }
 
-        public void HitVFX(Vector3 hitPosition) {
+        private void OnAttackFinish() {
+            _navMeshAgent.isStopped = false;
+            GetComponentInChildren<EnemyDamageDealer>().EndDealDamage();
+        }
+
+        private void HitVFX(Vector3 hitPosition) {
             if (hitVFX == null)
                 return;
 
@@ -87,14 +93,6 @@ namespace TopdownRPG.Enemy {
         private void Die() {
             _animator.SetBool(IsDeathHash, true);
             Destroy(gameObject, 5f);
-        }
-
-        private void OnAttackHit() {
-            GetComponentInChildren<EnemyDamageDealer>().StartDealDamage();
-        }
-
-        private void OnAttackFinish() {
-            GetComponentInChildren<EnemyDamageDealer>().EndDealDamage();
         }
 
 

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TopdownRPG.Combat;
 using UnityEngine;
@@ -56,13 +55,12 @@ namespace TopdownRPG.Character {
         #region Update Logic
         private void Update() {
             if (!AttackPlaying && ComboStep > 0 && Time.time >= _comboExpireTime) {
-                // Reset Combo
-                _attackIndex = 0;
+                _attackIndex = 0; // Reset Combo
             }
         }
         #endregion
 
-        public void HitVFX(Vector3 hitPosition) {
+        private void HitVFX(Vector3 hitPosition) {
             if (hitVFX == null)
                 return;
 
@@ -79,6 +77,8 @@ namespace TopdownRPG.Character {
 
             IsGetHit = true;
             HitVFX(hitPoint);
+
+            _attackIndex = 0; // Reset Combo
             Debug.Log("GET HIT!!!!");
             // TODO: tạm delay để trigger reset animation, chuyển sang FSM về sau
             _DoDelayAction(0.5f);
