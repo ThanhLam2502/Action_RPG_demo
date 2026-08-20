@@ -9,6 +9,7 @@ namespace TopdownRPG.Enemy {
     public class Enemy : MonoBehaviour, IDamageable {
         // @formatter:off
         [SerializeField] private int health = 3;
+        [SerializeField] private GameObject hitVFX;
         
         [Header("Combat")]
         [SerializeField] private float attackCd = 3f;
@@ -38,7 +39,7 @@ namespace TopdownRPG.Enemy {
         #endregion
 
         private void Update() {
-            if (_animator.GetBool(IsDeathHash)) {
+            if (_player == null || _animator.GetBool(IsDeathHash)) {
                 return;
             }
 
@@ -61,17 +62,26 @@ namespace TopdownRPG.Enemy {
             transform.LookAt(_player.transform);
         }
 
+        public void HitVFX(Vector3 hitPosition) {
+            if (hitVFX == null)
+                return;
 
-        public void TakeDamage(int damage) {
+            GameObject hit = Instantiate(hitVFX, hitPosition, Quaternion.identity);
+            Destroy(hit, 3f);
+        }
+
+        public void TakeDamage(int damage, Vector3 hitPoint) {
             health -= damage;
             if (health <= 0) {
                 Die();
                 return;
             }
+
             // reset attack 1 phần cooldown khi bị hit (block time attack)ssssssss
             _timePassed = attackCd * 0.5f;
             // animation dmg cuối thì không cần trigger
             _animator.SetTrigger(DamageHash);
+            HitVFX(hitPoint);
         }
 
         private void Die() {
@@ -82,11 +92,11 @@ namespace TopdownRPG.Enemy {
         private void OnAttackHit() {
             GetComponentInChildren<EnemyDamageDealer>().StartDealDamage();
         }
-        
+
         private void OnAttackFinish() {
             GetComponentInChildren<EnemyDamageDealer>().EndDealDamage();
         }
-        
+
 
         private void OnDrawGizmos() {
             Gizmos.color = Color.red;

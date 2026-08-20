@@ -1,3 +1,4 @@
+using TopdownRPG.Character;
 using UnityEngine;
 
 namespace TopdownRPG.Combat {
@@ -29,9 +30,9 @@ namespace TopdownRPG.Combat {
             if (_canDealDamage && !_hasDealDamage) {
                 RaycastHit hit;
                 if (Physics.Raycast(attackPoint.position, attackPoint.up, out hit, weaponLength, targetMask)) {
-                    Debug.Log($"Enemy hit: {hit.collider.name}");
+                    // Debug.Log($"Enemy hit: {hit.collider.name}");
                     hit.collider.TryGetComponent(out IDamageable playerCombat);
-                    playerCombat.TakeDamage(weaponDamage);
+                    playerCombat.TakeDamage(weaponDamage, hit.point);
                     // IDamageable pDamageable = hit.collider.GetComponentInParent<IDamageable>();
                     // pDamageable?.TakeDamage(weaponDamage);
                     _hasDealDamage = true;

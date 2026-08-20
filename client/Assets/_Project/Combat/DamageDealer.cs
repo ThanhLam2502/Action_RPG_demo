@@ -48,10 +48,11 @@ namespace TopdownRPG.Combat {
 
                 // hit.transform.TryGetComponent(out IDamageable damageableComponent);
                 // Debug.Log($"Name: {damageable.GameObject.name}");
-                if (!_hitTargets.Add(hit.gameObject))
+                if (!_hitTargets.Add(damageable.GameObject))
                     continue;
 
-                damageable.TakeDamage(weaponDamage); // apply damage
+                Vector3 hitPoint = hit.ClosestPoint(attackPoint.position);
+                damageable.TakeDamage(weaponDamage, hitPoint); // apply damage
             }
         }
 

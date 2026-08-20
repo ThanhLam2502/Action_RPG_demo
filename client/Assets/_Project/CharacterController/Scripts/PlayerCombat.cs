@@ -6,14 +6,18 @@ using UnityEngine;
 namespace TopdownRPG.Character {
     public class PlayerCombat : MonoBehaviour, IDamageable {
         #region Class Variable
+        // @formatter:off
         // TODO: tách sang sang health system riêng để tránh chồng chéo
         [SerializeField] private int health = 100;
+        [SerializeField] private GameObject hitVFX;
 
-        [Header("Equipment")] [SerializeField] private GameObject slotL;
+        [Header("Equipment")] 
+        [SerializeField] private GameObject slotL;
         [SerializeField] private GameObject slotR;
         [SerializeField] private GameObject weapon;
         [SerializeField] private GameObject weaponHolder;
         [SerializeField] private float comboWindow = 1.0f;
+        // @formatter:on
 
         public GameObject GameObject => gameObject;
 
@@ -26,7 +30,6 @@ namespace TopdownRPG.Character {
         public bool IsGetHit { get; private set; }
 
         private int _attackIndex = 0;
-        private bool _attackQueued = false;
         private float _comboExpireTime;
         private DamageDealer _damageDealer;
         private PlayerActionsInput _playerActionsInput;
@@ -59,13 +62,23 @@ namespace TopdownRPG.Character {
         }
         #endregion
 
-        public void TakeDamage(int damage) {
+        public void HitVFX(Vector3 hitPosition) {
+            if (hitVFX == null)
+                return;
+
+            GameObject hit = Instantiate(hitVFX, hitPosition, Quaternion.identity);
+            Destroy(hit, 3f);
+        }
+
+        public void TakeDamage(int damage, Vector3 hitPoint) {
             health -= damage;
             if (health <= 0) {
                 Die();
                 return;
             }
+
             IsGetHit = true;
+            HitVFX(hitPoint);
             Debug.Log("GET HIT!!!!");
             // TODO: tạm delay để trigger reset animation, chuyển sang FSM về sau
             _DoDelayAction(0.5f);
@@ -90,8 +103,7 @@ namespace TopdownRPG.Character {
                 return;
             }
 
-            if (AttackPlaying) { // input buffer
-                _attackQueued = true;
+            if (AttackPlaying) {
                 return;
             }
 
@@ -109,21 +121,18 @@ namespace TopdownRPG.Character {
         }
 
         private void PlayAttack(int attackIndex) {
-            _attackQueued = false;
-
             ComboStep = attackIndex;
             AttackPlaying = true;
         }
 
         public void OnAttackHit() {
             _damageDealer.StartDealDamage();
-
+            // --
             AttackPlaying = false;
-            _comboExpireTime = Time.time + comboWindow; // Bắt đầu tính combo từ Hit
+            _comboExpireTime = Time.time + comboWindow;
         }
 
         public void OnAttackFinish() {
-            Debug.Log("OnAttackFinish " + _attackIndex);
             _damageDealer.EndDealDamage();
         }
 
