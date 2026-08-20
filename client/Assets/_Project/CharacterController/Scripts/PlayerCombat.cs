@@ -6,6 +6,7 @@ using UnityEngine;
 namespace TopdownRPG.Character {
     public class PlayerCombat : MonoBehaviour, IDamageable {
         #region Class Variable
+        // TODO: tách sang sang health system riêng để tránh chồng chéo
         [SerializeField] private int health = 100;
 
         [Header("Equipment")] [SerializeField] private GameObject slotL;
@@ -67,18 +68,18 @@ namespace TopdownRPG.Character {
             IsGetHit = true;
             Debug.Log("GET HIT!!!!");
             // TODO: tạm delay để trigger reset animation, chuyển sang FSM về sau
-            DoDelayAction(0.5f);
+            _DoDelayAction(0.5f);
         }
 
         private void Die() {
             Debug.Log("DEATH");
         }
 
-        private void DoDelayAction(float delayTime) {
-            StartCoroutine(DelayAction(delayTime));
+        private void _DoDelayAction(float delayTime) {
+            StartCoroutine(_DelayAction(delayTime));
         }
 
-        private IEnumerator DelayAction(float delayTime) {
+        private IEnumerator _DelayAction(float delayTime) {
             //Wait for the specified delay time before continuing.
             yield return new WaitForSeconds(delayTime);
             IsGetHit = false;
