@@ -212,6 +212,10 @@ PrefabInstance:
       propertyPath: targetMask.m_Bits
       value: 128
       objectReference: {fileID: 0}
+    - target: {fileID: 8036086058827475941, guid: b84b29c224ae8b0479fd4875e9214c66, type: 3}
+      propertyPath: hitVFX
+      value: 
+      objectReference: {fileID: 1968586304485042, guid: 9645c3168acabe34ba19eb8e4a04d558, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1349,6 +1353,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6557057881317722246, guid: 102b43ac38142884cb1d3ae07df86f8e, type: 3}
+      propertyPath: hitVFX
+      value: 
+      objectReference: {fileID: 1968586304485042, guid: 9645c3168acabe34ba19eb8e4a04d558, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
