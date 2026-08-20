@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 39a91998012da0747943958035d26be5
+guid: 01795ff4732afa54a811a4ef60f47cf6
 ModelImporter:
   serializedVersion: 24300
   internalIDToNameTable:
@@ -317,12 +317,9 @@ ModelImporter:
     second: RPG-Character-Mesh
   - first:
       1: 100208
-    second: Box001
+    second: Crossbow
   - first:
       1: 100210
-    second: Spear
-  - first:
-      1: 100212
     second: Exporter
   - first:
       4: 400000
@@ -638,12 +635,9 @@ ModelImporter:
     second: RPG-Character-Mesh
   - first:
       4: 400208
-    second: Box001
+    second: Crossbow
   - first:
       4: 400210
-    second: Spear
-  - first:
-      4: 400212
     second: Exporter
   - first:
       23: 2300000
@@ -662,10 +656,7 @@ ModelImporter:
     second: USP
   - first:
       23: 2300010
-    second: Box001
-  - first:
-      23: 2300012
-    second: Spear
+    second: Crossbow
   - first:
       33: 3300000
     second: Mesh_Soldier_A
@@ -683,10 +674,7 @@ ModelImporter:
     second: USP
   - first:
       33: 3300010
-    second: Box001
-  - first:
-      33: 3300012
-    second: Spear
+    second: Crossbow
   - first:
       43: 4300000
     second: Mesh_Soldier_A
@@ -710,13 +698,10 @@ ModelImporter:
     second: RPG-Character-Mesh
   - first:
       43: 4300014
-    second: Box001
-  - first:
-      43: 4300016
-    second: Spear
+    second: Crossbow
   - first:
       74: 7400000
-    second: 2Hand-Sword-Attack6
+    second: 2Hand-Sword-GetHit-B1
   - first:
       95: 9500000
     second: //RootNode
@@ -750,7 +735,7 @@ ModelImporter:
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'B_Spine' has translation animation that
-      will be discarded.\n\t'B_Spine2' has translation animation that will be discarded.\n"
+      will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -764,11 +749,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: 2Hand-Sword-Attack6
+      name: 2Hand-Sword-GetHit-B1
       takeName: Take 001
       internalID: 7400000
       firstFrame: 0
-      lastFrame: 36
+      lastFrame: 14
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -779,7 +764,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
@@ -787,21 +772,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.25
-        functionName: OnAttackHit
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.6664289
-        functionName: OnAttackFinish
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {fileID: 101100000, guid: 4ebc95c8618479f4d8251c7dafa10029, type: 2}

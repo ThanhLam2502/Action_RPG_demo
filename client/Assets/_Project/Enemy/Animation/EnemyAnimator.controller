@@ -9,7 +9,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7831638795069683802, guid: 3c1c8846fdf440a4c9d91273b673f030, type: 3}
+    m_Motion: {fileID: -6206981513316247533, guid: b078634dea3d2b74ea8521000f025458, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -17,7 +17,7 @@ BlendTree:
     m_DirectBlendParameter: Speed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f7cf92044e70247498759c80a18fa4f8, type: 3}
+    m_Motion: {fileID: 5987713911036300057, guid: e630e60859727694f93f81f38b02530a, type: 3}
     m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -99,7 +99,7 @@ AnimatorController:
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: attack
     m_Type: 9
@@ -137,9 +137,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: damage
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: isDeath
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1799164572019154437}
   m_Solo: 0
@@ -161,7 +158,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MeleeAttack_OneHanded
+  m_Name: MeleeAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -175,7 +172,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8731992131643994696, guid: c1f842e051bb89a40a383439d36c80bf, type: 3}
+  m_Motion: {fileID: 7400000, guid: 39a91998012da0747943958035d26be5, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -333,7 +330,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7160605529220437193, guid: 6d63f48bf2bc2e64a9295d5b1a4b44bf, type: 3}
+  m_Motion: {fileID: 7160605529220437193, guid: 79df90b326d962945886e9693bd6f7a8, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

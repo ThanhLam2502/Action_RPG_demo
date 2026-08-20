@@ -1,25 +1,31 @@
 using System;
+using System.Collections;
 using TopdownRPG.Combat;
 using UnityEngine;
 
 namespace TopdownRPG.Character {
-    public class PlayerCombat : MonoBehaviour {
+    public class PlayerCombat : MonoBehaviour, IDamageable {
         #region Class Variable
-        [SerializeField] private GameObject slotL;
+        [SerializeField] private int health = 100;
+
+        [Header("Equipment")] [SerializeField] private GameObject slotL;
         [SerializeField] private GameObject slotR;
         [SerializeField] private GameObject weapon;
         [SerializeField] private GameObject weaponHolder;
-        [SerializeField] private float comboWindow = 1.5f;
+        [SerializeField] private float comboWindow = 1.0f;
 
-        public bool AttackRequested { get; private set; }
-        public bool HasSword { get; private set; } = false;
-        public bool IsDrawingWeapon { get; private set; }
-
-        public bool IsSheathingWeapon { get; private set; }
+        public GameObject GameObject => gameObject;
 
         // 0 = Attack 1; 1 = Attack 2; 2 = Attack 3
         public int ComboStep { get; private set; }
-        
+        public bool AttackPlaying { get; private set; }
+        public bool HasSword { get; private set; } = false;
+        public bool IsDrawingWeapon { get; private set; }
+        public bool IsSheathingWeapon { get; private set; }
+        public bool IsGetHit { get; private set; }
+
+        private int _attackIndex = 0;
+        private bool _attackQueued = false;
         private float _comboExpireTime;
         private DamageDealer _damageDealer;
         private PlayerActionsInput _playerActionsInput;
@@ -45,45 +51,78 @@ namespace TopdownRPG.Character {
 
         #region Update Logic
         private void Update() {
-            if (!AttackRequested && ComboStep > 0 && Time.time >= _comboExpireTime) {
+            if (!AttackPlaying && ComboStep > 0 && Time.time >= _comboExpireTime) {
                 // Reset Combo
-                ComboStep = 0;
+                _attackIndex = 0;
             }
         }
         #endregion
+
+        public void TakeDamage(int damage) {
+            health -= damage;
+            if (health <= 0) {
+                Die();
+                return;
+            }
+            IsGetHit = true;
+            Debug.Log("GET HIT!!!!");
+            // TODO: tạm delay để trigger reset animation, chuyển sang FSM về sau
+            DoDelayAction(0.5f);
+        }
+
+        private void Die() {
+            Debug.Log("DEATH");
+        }
+
+        private void DoDelayAction(float delayTime) {
+            StartCoroutine(DelayAction(delayTime));
+        }
+
+        private IEnumerator DelayAction(float delayTime) {
+            //Wait for the specified delay time before continuing.
+            yield return new WaitForSeconds(delayTime);
+            IsGetHit = false;
+        }
 
         private void HandleAttack() {
             if (IsDrawingWeapon || IsSheathingWeapon) {
                 return;
             }
 
-            if (AttackRequested) {
-                Debug.Log($"Block step: {ComboStep}");
+            if (AttackPlaying) { // input buffer
+                _attackQueued = true;
                 return;
             }
 
-            // Combo đã hết thời gian -> Attack 1
-            if (ComboStep == 0 || Time.time >= _comboExpireTime) {
-                ComboStep = 1;
+            if (_attackIndex == 0 || Time.time >= _comboExpireTime) {
+                _attackIndex = 1;
             } else {
-                ComboStep++;
+                _attackIndex++;
                 // Sau Attack 3 -> quay lại Attack 1
-                if (ComboStep > 3) {
-                    ComboStep = 1;
+                if (_attackIndex > 3) {
+                    _attackIndex = 1;
                 }
             }
 
-            AttackRequested = true;
+            PlayAttack(_attackIndex);
+        }
+
+        private void PlayAttack(int attackIndex) {
+            _attackQueued = false;
+
+            ComboStep = attackIndex;
+            AttackPlaying = true;
         }
 
         public void OnAttackHit() {
             _damageDealer.StartDealDamage();
 
-            AttackRequested = false; // Cho phép bắt đâù trigger mới
+            AttackPlaying = false;
             _comboExpireTime = Time.time + comboWindow; // Bắt đầu tính combo từ Hit
         }
 
         public void OnAttackFinish() {
+            Debug.Log("OnAttackFinish " + _attackIndex);
             _damageDealer.EndDealDamage();
         }
 
@@ -110,8 +149,9 @@ namespace TopdownRPG.Character {
                 // TODO: set _damageDealer = Unarmed
                 weapon.SetActive(false);
             }
+
             weaponHolder.SetActive(!HasSword);
-            
+
             // reset animation state
             IsDrawingWeapon = false;
             IsSheathingWeapon = false;

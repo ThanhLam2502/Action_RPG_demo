@@ -13,42 +13,42 @@ namespace TopdownRPG.Combat {
         [SerializeField] private LayerMask targetMask;
         // @formatter:on
 
-        private bool canDealDamage;
-        private readonly HashSet<GameObject> hitTargets = new();
-        private readonly Collider[] hitBuffer = new Collider[16];
+        private bool _canDealDamage;
+        private readonly HashSet<GameObject> _hitTargets = new();
+        private readonly Collider[] _hitBuffer = new Collider[16];
 
         private void Start() {
-            canDealDamage = false;
+            _canDealDamage = false;
         }
 
         private void Update() {
-            if (!canDealDamage)
+            if (!_canDealDamage)
                 return;
 
             CheckHit();
         }
 
         public void StartDealDamage() {
-            canDealDamage = true;
-            hitTargets.Clear();
+            _canDealDamage = true;
+            _hitTargets.Clear();
         }
 
         public void EndDealDamage() {
-            canDealDamage = false;
+            _canDealDamage = false;
         }
 
         private void CheckHit() {
-            var hitCount = Physics.OverlapBoxNonAlloc(attackPoint.position, boxSize * 0.5f, hitBuffer, attackPoint.rotation, targetMask);
+            var hitCount = Physics.OverlapBoxNonAlloc(attackPoint.position, boxSize * 0.5f, _hitBuffer, attackPoint.rotation, targetMask);
 
             for (int i = 0; i < hitCount; i++) {
-                Collider hit = hitBuffer[i];
+                Collider hit = _hitBuffer[i];
                 IDamageable damageable = hit.GetComponent<IDamageable>();
                 if (damageable == null)
                     continue;
 
                 // hit.transform.TryGetComponent(out IDamageable damageableComponent);
                 // Debug.Log($"Name: {damageable.GameObject.name}");
-                if (!hitTargets.Add(hit.gameObject))
+                if (!_hitTargets.Add(hit.gameObject))
                     continue;
 
                 damageable.TakeDamage(weaponDamage); // apply damage
@@ -61,7 +61,7 @@ namespace TopdownRPG.Combat {
                 return;
 
             Gizmos.matrix = Matrix4x4.TRS(attackPoint.position, attackPoint.rotation, Vector3.one);
-            Gizmos.color = canDealDamage ? Color.red : Color.yellow;
+            Gizmos.color = _canDealDamage ? Color.red : Color.yellow;
             Gizmos.DrawWireCube(Vector3.zero, boxSize);
         }
     }

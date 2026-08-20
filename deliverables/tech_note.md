@@ -1,21 +1,22 @@
 # Tech Notes
 
-| Topic                  | Note                                                                                                        |
-|:-----------------------|:------------------------------------------------------------------------------------------------------------|
-| Rigidbody              | Điều khiển vị trí vật thể thông qua hệ thống mô phỏng vật lý của Unity                                      |
-| Character Controller   | Di chuyển Game Object mà không chịu tác động hay ảnh hưởng vật lý                                           |
-| Terrain                | Xây dựng và quản lý địa hình                                                                                |
-| ScriptableObject       | Dùng để lưu trữ data độc lập -- <chưa tìm hiểu sâu>                                                         |
-| C# event               | Sử dụng event để truyền dữ liệu khi có sự kiện xảy ra (dùng nội bộ)                                         |
-| Cinemachine            | Package có sẵn để xử lý camera (rất ttootscho xử lý góc nhìn thứ 3)                                         |
-| Unity trigger collider | method có sẵn để xử lý va chạm (enter or leave zone)                                                        |
-| Physics.OverlapSphere  | cách xử lý kiểm tra va chạm (colider) dựa trên radius                                                       |
-| State Pattern          | Xử lý lập trình theo hướng state (tại mỗi thời điểm trong nhóm trạng thái chỉ có 1 state active)            |
-| Polling Object         | Kỹ thuật lập trình tái sử dụng đối tương                                                                    |
-| Singleton Pattern      | Giữ 1 instance tồn tại duy nhất                                                                             |
-| ActionsInput           | Kỹ thuật của unity để lắng nghe Input thay vì theo cách truyền thống Check Key Binding từ Update            |
-| Dependency Injection   | Kỹ thuật inject dependency từ bên ngoài, thường thông qua interface; thường sử dụng DI Container để quản lý |
-| Interface              | Khỏi tạo contract để những đối tượng sử dụng đều phai triển khai nó (dung phối hợp tối với DJ)              |
+| Topic                  | Note                                                                                                                             |
+|:-----------------------|:---------------------------------------------------------------------------------------------------------------------------------|
+| Rigidbody              | Điều khiển vị trí vật thể thông qua hệ thống mô phỏng vật lý của Unity                                                           |
+| Character Controller   | Di chuyển Game Object mà không chịu tác động hay ảnh hưởng vật lý                                                                |
+| Terrain                | Xây dựng và quản lý địa hình                                                                                                     |
+| ScriptableObject       | Dùng để lưu trữ data độc lập -- <chưa tìm hiểu sâu>                                                                              |
+| C# event               | Sử dụng event để truyền dữ liệu khi có sự kiện xảy ra (dùng nội bộ)                                                              |
+| Cinemachine            | Package có sẵn để xử lý camera (rất ttootscho xử lý góc nhìn thứ 3)                                                              |
+| Unity trigger collider | method có sẵn để xử lý va chạm (enter or leave zone)                                                                             |
+| Physics.OverlapSphere  | cách xử lý kiểm tra va chạm (colider) dựa trên radius                                                                            |
+| State Pattern          | Xử lý lập trình theo hướng state (tại mỗi thời điểm trong nhóm trạng thái chỉ có 1 state active)                                 |
+| Polling Object         | Kỹ thuật lập trình tái sử dụng đối tương                                                                                         |
+| Singleton Pattern      | Giữ 1 instance tồn tại duy nhất                                                                                                  |
+| ActionsInput           | Kỹ thuật của unity để lắng nghe Input thay vì theo cách truyền thống Check Key Binding từ Update                                 |
+| Dependency Injection   | Kỹ thuật inject dependency từ bên ngoài, thường thông qua interface; thường sử dụng DI Container để quản lý                      |
+| Interface              | Khỏi tạo contract để những đối tượng sử dụng đều phai triển khai nó (dung phối hợp tối với DJ)                                   |
+| BIT MATH               | AND(&), OR (\|), Bits shift left (<<), Bits shift right (>>)                                                                     |
 
 ## Rigidbody
 

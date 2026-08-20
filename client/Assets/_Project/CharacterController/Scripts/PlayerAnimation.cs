@@ -33,6 +33,8 @@ namespace TopdownRPG.Character
         private static readonly int IsDrawingWeaponHash = Animator.StringToHash("isDrawingWeapon");
         private static readonly int IsSheathingWeaponHash = Animator.StringToHash("isSheathingWeapon");
         private static readonly int ComboStepHash = Animator.StringToHash("comboStep");
+        private static readonly int IsGetHitHash = Animator.StringToHash("isGetHit");
+        
 
         private static readonly int IsPlayingActionHash = Animator.StringToHash("isPlayingAction");
         private int[] actionHashes;
@@ -86,7 +88,8 @@ namespace TopdownRPG.Character
             _animator.SetBool(IsSheathingWeaponHash, _playerCombat.IsSheathingWeapon);
 
             _animator.SetInteger(ComboStepHash, _playerCombat.ComboStep);
-            _animator.SetBool(IsAttackingHash, _playerCombat.AttackRequested);
+            _animator.SetBool(IsAttackingHash, _playerCombat.AttackPlaying);
+            _animator.SetBool(IsGetHitHash, _playerCombat.IsGetHit);
             // -- Action cancellable
             _animator.SetBool(IsGatheringHash, _playerInteract.IsGathering);
             _animator.SetBool(IsPlayingActionHash, isPlayingAction);
