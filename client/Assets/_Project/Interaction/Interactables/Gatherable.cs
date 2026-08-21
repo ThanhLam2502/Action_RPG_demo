@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TopdownRPG.Interaction
 {
-    public class Gatherable : MonoBehaviour, IInteractable
+    public class Gatherable : MonoBehaviour
     {
         public string InteractableName => gameObject.name;
         public bool Interact(GameObject interactor)
