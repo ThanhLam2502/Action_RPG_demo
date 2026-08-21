@@ -94,10 +94,12 @@ namespace TopdownRPG.Character
         private void HandleGather() {
             if (_currentInteractable == null)
                 return;
-            // TryInteract
-            if (_currentInteractable.Interact(gameObject)) {
-                StartGathering();
-            }
+            
+            
+            // // TryInteract
+            // if (_currentInteractable.Interact(this)) {
+            //     StartGathering();
+            // }
         }
 
         private void StartGathering() {
