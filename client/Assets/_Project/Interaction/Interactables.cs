@@ -6,17 +6,28 @@ namespace TopdownRPG.Interaction {
         // @formatter:off
         [Header("Interaction Data")]
         [SerializeField] private bool canInteract = true;
-        // @formatter:on
+        [SerializeField] private string displayName;
         
+        // [Header("UI")]
+        // [SerializeField] private InteractableUI interactableUI;
+        // @formatter:on
+
         public bool CanInteract => canInteract;
-        protected string InteractableName = "";
-        protected float InteractionDistance = 2f;
-        protected GameObject InteractableNameCanvas;
-        // protected InteractableNameText InteractableNameText;
+        public GameObject GameObject => gameObject;
+        public string DisplayName => displayName;
+        public abstract string InteractionAction { get; }
+
+        private GameObject InteractableNameCanvas;
+        private InteractableUI InteractableUI;
+
+        protected virtual void Awake() {
+            // if (interactableUI == null)
+            //     interactableUI = GetComponentInChildren<InteractableUI>();
+        }
 
         public virtual void Start() {
-            // InteractableNameCanvas = GameObject.FindGameObjectWithTag("Canvas");
-            // InteractableNameText = InteractableNameCanvas.GetComponentInChildren<InteractableNameText>();
+            InteractableNameCanvas = GameObject.FindGameObjectWithTag("Canvas");
+            InteractableUI = InteractableNameCanvas.GetComponentInChildren<InteractableUI>();
         }
 
         private void OnDestroy() {
@@ -24,14 +35,16 @@ namespace TopdownRPG.Interaction {
         }
 
         public virtual void TargetOn() {
+            print("Target On");
             // Enable outline / highlight
-            // InteractableNameText.ShowText(this);
-            // InteractableNameText.SetInteractableNamePosition(this);
+            InteractableUI.Show(DisplayName, InteractionAction);
+            InteractableUI.SetInteractableNamePosition(this);
         }
 
         public virtual void TargetOff() {
+            print("Target Off");
             // Enable outline / highlight
-            // InteractableNameText.HideText();
+            InteractableUI.Hide();
         }
 
         public abstract void Interact(Interactor interactor);

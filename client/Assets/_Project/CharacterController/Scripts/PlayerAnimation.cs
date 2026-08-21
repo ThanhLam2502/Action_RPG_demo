@@ -11,7 +11,7 @@ namespace TopdownRPG.Character
 
         private PlayerState _playerState;
         private PlayerCombat _playerCombat;
-        private PlayerInteract _playerInteract;
+        // private PlayerInteract _playerInteract;
         private PlayerController _playerController;
         private PlayerLocomotionInput _playerLocomotionInput;
 
@@ -48,7 +48,7 @@ namespace TopdownRPG.Character
         private void Awake() {
             _playerState = GetComponent<PlayerState>();
             _playerCombat = GetComponent<PlayerCombat>();
-            _playerInteract = GetComponent<PlayerInteract>();
+            // _playerInteract = GetComponent<PlayerInteract>();
             _playerController = GetComponent<PlayerController>();
             _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
 
@@ -91,7 +91,7 @@ namespace TopdownRPG.Character
             _animator.SetBool(IsAttackingHash, _playerCombat.AttackPlaying);
             _animator.SetBool(IsGetHitHash, _playerCombat.IsGetHit);
             // -- Action cancellable
-            _animator.SetBool(IsGatheringHash, _playerInteract.IsGathering);
+            // _animator.SetBool(IsGatheringHash, _playerInteract.IsGathering);
             _animator.SetBool(IsPlayingActionHash, isPlayingAction);
 
             _animator.SetFloat(InputXHash, _currentBlendInput.x);

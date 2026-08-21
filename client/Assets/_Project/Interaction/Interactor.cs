@@ -62,9 +62,9 @@ namespace TopdownRPG.Interaction {
             
             if (currentInteractable != null) {
                 _interactableTarget = currentInteractable;
-                _interactableTarget.TargetOn();
+                _interactableTarget?.TargetOn();
             } else {
-                _interactableTarget.TargetOff();
+                _interactableTarget?.TargetOff();
                 _interactableTarget = null;
             }
             // if (currentInteractable != _interactableTarget)

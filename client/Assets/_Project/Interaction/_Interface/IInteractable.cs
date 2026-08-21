@@ -2,7 +2,9 @@ using UnityEngine;
 
 namespace TopdownRPG.Interaction {
     public interface IInteractable {
-        // string InteractableName { get; }
+        GameObject GameObject { get; }
+        string DisplayName { get; }
+        string InteractionAction { get; }
 
         void TargetOn();
         void TargetOff();

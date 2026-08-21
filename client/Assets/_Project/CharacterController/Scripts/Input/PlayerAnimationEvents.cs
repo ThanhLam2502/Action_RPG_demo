@@ -1,13 +1,13 @@
 using UnityEngine;
 
 namespace TopdownRPG.Character {
-    public class PlayerAnimationEvents : MonoBehaviour {
+    public sealed class PlayerAnimationEvents : MonoBehaviour {
         private PlayerCombat _playerCombat;
-        private PlayerInteract _playerInteract;
+        // private PlayerInteract _playerInteract;
 
         private void Awake() {
             _playerCombat = GetComponentInParent<PlayerCombat>();
-            _playerInteract = GetComponentInParent<PlayerInteract>();
+            // _playerInteract = GetComponentInParent<PlayerInteract>();
         }
 
         public void WeaponSwitch() {
@@ -23,13 +23,13 @@ namespace TopdownRPG.Character {
         }
 
         public void OnGatherFinished() {
-            _playerInteract.CompleteGathering();
+            // _playerInteract.CompleteGathering();
         }
 
-        protected virtual void FootL() {
+        private void FootL() {
         }
 
-        protected virtual void FootR() {
+        private void FootR() {
         }
     }
 }

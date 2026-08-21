@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5653671929108443736}
   - component: {fileID: 3250405785613687386}
   - component: {fileID: 5940560362144427464}
-  - component: {fileID: 4295311894347758666}
   m_Layer: 7
   m_Name: Mushroom
   m_TagString: Untagged
@@ -115,15 +114,3 @@ CapsuleCollider:
   m_Height: 0.2859373
   m_Direction: 1
   m_Center: {x: -0.002418138, y: 0.1, z: 0.0038491488}
---- !u!114 &4295311894347758666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170883575678208020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22c6687001e89c5488bbfa801105934e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TopdownRPG.Interaction.Gatherable
