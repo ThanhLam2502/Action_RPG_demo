@@ -779,9 +779,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd06517f559b4489597cfb8fb0050a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TopdownRPG.Enemy.Enemy
-  health: 500
+  health: 50
+  getHitVFX: {fileID: 0}
   attackCd: 3
-  attackRange: 1
+  attackRange: 1.5
   aggroRange: 8
 --- !u!195 &5239015441954678562
 NavMeshAgent:
@@ -792,7 +793,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1305276639864822111}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

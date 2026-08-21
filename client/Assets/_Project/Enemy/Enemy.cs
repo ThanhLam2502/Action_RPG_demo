@@ -9,7 +9,7 @@ namespace TopdownRPG.Enemy {
     public class Enemy : MonoBehaviour, IDamageable {
         // @formatter:off
         [SerializeField] private int health = 3;
-        [SerializeField] private GameObject hitVFX;
+        [SerializeField] private GameObject getHitVFX;
         
         [Header("Combat")]
         [SerializeField] private float attackCd = 3f;
@@ -52,11 +52,19 @@ namespace TopdownRPG.Enemy {
             _timePassed += Time.deltaTime;
 
             if (_newDestinationCd <= 0 && Vector3.Distance(_player.transform.position, transform.position) <= aggroRange) {
-                _navMeshAgent.SetDestination(_player.transform.position);
+                Vector3 destination = _player.transform.position;
+                destination.y = transform.position.y;
+                _navMeshAgent.SetDestination(destination);
             }
 
             _newDestinationCd -= Time.deltaTime;
-            transform.LookAt(_player.transform);
+            
+            // look player
+            // transform.LookAt(_player.transform);
+            /*Vector3 direction = _player.transform.position - transform.position;
+            direction.y = 0f;
+            if (direction.sqrMagnitude > 0.001f)
+                transform.rotation = Quaternion.LookRotation(direction);*/
         }
         
         private void OnAttackHit() {
@@ -68,11 +76,12 @@ namespace TopdownRPG.Enemy {
             GetComponentInChildren<EnemyDamageDealer>().EndDealDamage();
         }
 
+        // TODO: đưa về utils
         private void HitVFX(Vector3 hitPosition) {
-            if (hitVFX == null)
+            if (getHitVFX == null)
                 return;
 
-            GameObject hit = Instantiate(hitVFX, hitPosition, Quaternion.identity);
+            GameObject hit = Instantiate(getHitVFX, hitPosition, Quaternion.identity);
             Destroy(hit, 3f);
         }
 
@@ -83,7 +92,7 @@ namespace TopdownRPG.Enemy {
                 return;
             }
 
-            // reset attack 1 phần cooldown khi bị hit (block time attack)ssssssss
+            // reset attack 1 phần cooldown khi bị hit (block time attack)
             _timePassed = attackCd * 0.5f;
             // animation dmg cuối thì không cần trigger
             _animator.SetTrigger(DamageHash);

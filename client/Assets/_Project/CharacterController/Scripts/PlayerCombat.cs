@@ -8,7 +8,7 @@ namespace TopdownRPG.Character {
         // @formatter:off
         // TODO: tách sang sang health system riêng để tránh chồng chéo
         [SerializeField] private int health = 100;
-        [SerializeField] private GameObject hitVFX;
+        [SerializeField] private GameObject getHitVFX;
 
         [Header("Equipment")] 
         [SerializeField] private GameObject slotL;
@@ -60,11 +60,12 @@ namespace TopdownRPG.Character {
         }
         #endregion
 
+        // TODO: đưa về utils
         private void HitVFX(Vector3 hitPosition) {
-            if (hitVFX == null)
+            if (getHitVFX == null)
                 return;
 
-            GameObject hit = Instantiate(hitVFX, hitPosition, Quaternion.identity);
+            GameObject hit = Instantiate(getHitVFX, hitPosition, Quaternion.identity);
             Destroy(hit, 3f);
         }
 
@@ -76,10 +77,10 @@ namespace TopdownRPG.Character {
             }
 
             IsGetHit = true;
-            HitVFX(hitPoint);
 
+            HitVFX(hitPoint); // animation nhận hit 
             _attackIndex = 0; // Reset Combo
-            Debug.Log("GET HIT!!!!");
+
             // TODO: tạm delay để trigger reset animation, chuyển sang FSM về sau
             _DoDelayAction(0.5f);
         }
@@ -126,8 +127,18 @@ namespace TopdownRPG.Character {
         }
 
         public void OnAttackHit() {
-            _damageDealer.StartDealDamage();
-            // --
+            _damageDealer.StartDealDamage(ComboStep);
+            // -- test effect combo 3
+            if (ComboStep == 3 && HasSword) {
+                GameObject prefab = Resources.Load<GameObject>("VFX/Explosion01");
+                if (prefab != null) {
+                    GameObject explosion = Instantiate(prefab, weapon.transform.position, Quaternion.identity);
+                    explosion.transform.localScale = Vector3.one * 0.5f;
+                    Destroy(explosion, 1f);
+                }
+            }
+
+            // -- reset trigger
             AttackPlaying = false;
             _comboExpireTime = Time.time + comboWindow;
         }

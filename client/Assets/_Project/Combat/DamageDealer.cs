@@ -13,6 +13,7 @@ namespace TopdownRPG.Combat {
         [SerializeField] private LayerMask targetMask;
         // @formatter:on
 
+        private int _attackIndex = 0;
         private bool _canDealDamage;
         private readonly HashSet<GameObject> _hitTargets = new();
         private readonly Collider[] _hitBuffer = new Collider[16];
@@ -28,7 +29,8 @@ namespace TopdownRPG.Combat {
             CheckHit();
         }
 
-        public void StartDealDamage() {
+        public void StartDealDamage(int attackIndex) {
+            _attackIndex = attackIndex;
             _canDealDamage = true;
             _hitTargets.Clear();
         }
@@ -51,8 +53,13 @@ namespace TopdownRPG.Combat {
                 if (!_hitTargets.Add(damageable.GameObject))
                     continue;
 
+                // TODO: test thui
                 Vector3 hitPoint = hit.ClosestPoint(attackPoint.position);
-                damageable.TakeDamage(weaponDamage, hitPoint); // apply damage
+                if (_attackIndex == 3) {
+                    damageable.TakeDamage(weaponDamage * 3, hitPoint);
+                } else {
+                    damageable.TakeDamage(weaponDamage, hitPoint); // apply damage
+                }
             }
         }
 
