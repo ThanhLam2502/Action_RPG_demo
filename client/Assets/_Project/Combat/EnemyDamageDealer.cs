@@ -49,6 +49,7 @@ namespace TopdownRPG.Combat {
             _canDealDamage = false;
         }
 
+        #region Debug
         private void OnDrawGizmos() {
             if (attackPoint == null)
                 return;
@@ -56,5 +57,6 @@ namespace TopdownRPG.Combat {
             Gizmos.color = _canDealDamage ? Color.red : Color.yellow;
             Gizmos.DrawLine(attackPoint.position, attackPoint.position + attackPoint.up * weaponLength);
         }
+        #endregion
     }
 }

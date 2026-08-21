@@ -15,7 +15,7 @@ namespace TopdownRPG.Character {
         [SerializeField] private GameObject slotR;
         [SerializeField] private GameObject weapon;
         [SerializeField] private GameObject weaponHolder;
-        [SerializeField] private float comboWindow = 1.0f;
+        [SerializeField] private float comboWindow = 1.5f;
         // @formatter:on
 
         public GameObject GameObject => gameObject;

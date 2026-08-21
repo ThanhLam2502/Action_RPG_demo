@@ -66,8 +66,8 @@ namespace TopdownRPG.Combat {
                 }
             }
         }
-
-        // private void OnDrawGizmosSelected() {
+        
+        #region Debug
         private void OnDrawGizmos() {
             if (attackPoint == null)
                 return;
@@ -76,5 +76,6 @@ namespace TopdownRPG.Combat {
             Gizmos.color = _canDealDamage ? Color.red : Color.yellow;
             Gizmos.DrawWireCube(Vector3.zero, boxSize);
         }
+        #endregion
     }
 }

@@ -1,10 +1,8 @@
-// using UnityEngine;
-//
-// namespace TopdownRPG.Interaction
-// {
-//     public class Interactor : MonoBehaviour
-//     {
-//         #region Class Variable
+using UnityEngine;
+
+namespace TopdownRPG.Interaction {
+    public class Interactor : MonoBehaviour {
+         #region Class Variable
 //         [SerializeField] private int _numFound;
 //         [SerializeField] private float _scanInterval = 0.1f;
 //         [SerializeField] private float _interactionRadius = 0.2f;
@@ -12,8 +10,8 @@
 //
 //         private readonly Collider[] _colliders = new Collider[4];
 //         private IInteractable _currentInteractable;
-//         private float _scanTimer;
-//         #endregion
+         private float _scanTimer;
+         #endregion
 //
 //         #region Startup
 //         #endregion
@@ -72,5 +70,5 @@
 //             Gizmos.DrawWireSphere(_interactionPoint.position, _interactionRadius);
 //         }
 //         #endregion
-//     }
-// }
+    }
+}

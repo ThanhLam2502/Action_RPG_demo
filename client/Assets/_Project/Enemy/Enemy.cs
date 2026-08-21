@@ -100,16 +100,18 @@ namespace TopdownRPG.Enemy {
         }
 
         private void Die() {
+            _navMeshAgent.isStopped = true;
             _animator.SetBool(IsDeathHash, true);
             Destroy(gameObject, 5f);
         }
 
-
-        private void OnDrawGizmos() {
+        #region Debug
+        private void OnDrawGizmosSelected() {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, attackRange);
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, aggroRange);
         }
+        #endregion
     }
 }
