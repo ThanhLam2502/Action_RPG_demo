@@ -82,7 +82,7 @@ namespace TopdownRPG.Character {
             
             // -- Game feel
             HitVFX(hitPoint); // animation nhận hit 
-            CameraShake.Instance.ShakeCamera(1.2f, 0.12f); // TODO: tách ra hệ thống riêng
+            CameraShake.Instance.ShakeCamera(1.2f, 0.2f); // TODO: tách ra hệ thống riêng
             
             // TODO: tạm delay để trigger reset animation, chuyển sang FSM về sau
             _DoDelayAction(0.5f);
