@@ -56,8 +56,12 @@ namespace TopdownRPG.Combat {
                 // TODO: test thui
                 Vector3 hitPoint = hit.ClosestPoint(attackPoint.position);
                 if (_attackIndex == 3) {
+                    // -- Game feel Heavy
+                    CameraShake.Instance.ShakeCamera(1.8f, 0.14f);
                     damageable.TakeDamage(weaponDamage * 3, hitPoint);
                 } else {
+                    // -- Game feel Normal
+                    CameraShake.Instance.ShakeCamera(0.8f, 0.10f);
                     damageable.TakeDamage(weaponDamage, hitPoint); // apply damage
                 }
             }

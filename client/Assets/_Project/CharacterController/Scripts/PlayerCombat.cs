@@ -68,7 +68,7 @@ namespace TopdownRPG.Character {
             GameObject hit = Instantiate(getHitVFX, hitPosition, Quaternion.identity);
             Destroy(hit, 3f);
         }
-
+        
         public void TakeDamage(int damage, Vector3 hitPoint) {
             health -= damage;
             if (health <= 0) {
@@ -78,9 +78,12 @@ namespace TopdownRPG.Character {
 
             IsGetHit = true;
 
-            HitVFX(hitPoint); // animation nhận hit 
             _attackIndex = 0; // Reset Combo
-
+            
+            // -- Game feel
+            HitVFX(hitPoint); // animation nhận hit 
+            CameraShake.Instance.ShakeCamera(1.2f, 0.12f); // TODO: tách ra hệ thống riêng
+            
             // TODO: tạm delay để trigger reset animation, chuyển sang FSM về sau
             _DoDelayAction(0.5f);
         }
@@ -128,11 +131,12 @@ namespace TopdownRPG.Character {
 
         public void OnAttackHit() {
             _damageDealer.StartDealDamage(ComboStep);
-            // -- test effect combo 3
+            // TODO: handle xử lý system riêng -- test effect combo 3
             if (ComboStep == 3 && HasSword) {
                 GameObject prefab = Resources.Load<GameObject>("VFX/Explosion01");
                 if (prefab != null) {
-                    GameObject explosion = Instantiate(prefab, weapon.transform.position, Quaternion.identity);
+                    Vector3 explosionPos = weapon.transform.position + weapon.transform.forward * 1.2f;
+                    GameObject explosion = Instantiate(prefab, explosionPos, Quaternion.identity);
                     explosion.transform.localScale = Vector3.one * 0.5f;
                     Destroy(explosion, 1f);
                 }
