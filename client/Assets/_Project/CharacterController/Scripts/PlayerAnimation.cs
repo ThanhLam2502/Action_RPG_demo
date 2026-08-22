@@ -2,16 +2,13 @@ using System.Linq;
 using UnityEngine;
 using _Project.CharactorController;
 
-namespace TopdownRPG.Character
-{
-    public class PlayerAnimation : MonoBehaviour
-    {
+namespace TopdownRPG.Character {
+    public class PlayerAnimation : MonoBehaviour {
         [SerializeField] private Animator _animator;
         [SerializeField] private float locomotionBlendSpeed = 0.2f;
 
         private PlayerState _playerState;
         private PlayerCombat _playerCombat;
-        // private PlayerInteract _playerInteract;
         private PlayerController _playerController;
         private PlayerLocomotionInput _playerLocomotionInput;
 
@@ -34,21 +31,20 @@ namespace TopdownRPG.Character
         private static readonly int IsSheathingWeaponHash = Animator.StringToHash("isSheathingWeapon");
         private static readonly int ComboStepHash = Animator.StringToHash("comboStep");
         private static readonly int IsGetHitHash = Animator.StringToHash("isGetHit");
-        
+
 
         private static readonly int IsPlayingActionHash = Animator.StringToHash("isPlayingAction");
         private int[] actionHashes;
 
         private Vector3 _currentBlendInput = Vector3.zero;
 
-        private float _walkMaxBlendValue = 0.5f;
-        private float _runMaxBlendValue = 1.0f;
-        private float _sprintMaxBlendValue = 1.5f;
+        private readonly float _walkMaxBlendValue = 0.5f;
+        private readonly float _runMaxBlendValue = 1.0f;
+        private readonly float _sprintMaxBlendValue = 1.5f;
 
         private void Awake() {
             _playerState = GetComponent<PlayerState>();
             _playerCombat = GetComponent<PlayerCombat>();
-            // _playerInteract = GetComponent<PlayerInteract>();
             _playerController = GetComponent<PlayerController>();
             _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
 
@@ -60,15 +56,15 @@ namespace TopdownRPG.Character
         }
 
         private void UpdateAnimationState() {
-            bool isIdling = _playerState.CurrentPlayerMovementState == PlayerMovementState.Idling;
-            bool isRunning = _playerState.CurrentPlayerMovementState == PlayerMovementState.Running;
-            bool isSprinting = _playerState.CurrentPlayerMovementState == PlayerMovementState.Sprinting;
-            bool isJumping = _playerState.CurrentPlayerMovementState == PlayerMovementState.Jumping;
-            bool isFalling = _playerState.CurrentPlayerMovementState == PlayerMovementState.Falling;
-            bool isGrounded = _playerState.InGroundedState();
-            bool isPlayingAction = actionHashes.Any(hash => _animator.GetBool(hash));
+            var isIdling = _playerState.Movement == MovementState.Idling;
+            var isRunning = _playerState.Movement == MovementState.Running;
+            var isSprinting = _playerState.Movement == MovementState.Sprinting;
+            var isJumping = _playerState.Movement == MovementState.Jumping;
+            var isFalling = _playerState.Movement == MovementState.Falling;
+            var isGrounded = _playerState.IsGrounded();
+            var isPlayingAction = actionHashes.Any(hash => _animator.GetBool(hash));
 
-            bool isRunBlendValue = isRunning || isJumping || isFalling;
+            var isRunBlendValue = isRunning || isJumping || isFalling;
 
             Vector2 inputTarget = isSprinting ? _playerLocomotionInput.MovementInput * _sprintMaxBlendValue
                 : isRunBlendValue ? _playerLocomotionInput.MovementInput * _runMaxBlendValue
@@ -91,7 +87,8 @@ namespace TopdownRPG.Character
             _animator.SetBool(IsAttackingHash, _playerCombat.AttackPlaying);
             _animator.SetBool(IsGetHitHash, _playerCombat.IsGetHit);
             // -- Action cancellable
-            // _animator.SetBool(IsGatheringHash, _playerInteract.IsGathering);
+            var isGathering = _playerState.Interaction == InteractionState.Gathering;
+            _animator.SetBool(IsGatheringHash, isGathering);
             _animator.SetBool(IsPlayingActionHash, isPlayingAction);
 
             _animator.SetFloat(InputXHash, _currentBlendInput.x);

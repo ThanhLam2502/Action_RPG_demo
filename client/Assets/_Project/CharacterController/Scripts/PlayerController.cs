@@ -1,13 +1,11 @@
 using System;
+using TopdownRPG.Interaction;
 using UnityEngine;
 
-namespace TopdownRPG.Character
-{
+namespace TopdownRPG.Character {
     [DefaultExecutionOrder(-1)]
-    public class PlayerController : MonoBehaviour
-    {
+    public class PlayerController : MonoBehaviour {
         #region Class Variables
-
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Camera _playerCamera;
 
@@ -42,8 +40,13 @@ namespace TopdownRPG.Character
         [SerializeField] private LayerMask _groundLayers;
         // @formatter:on
 
-        private PlayerLocomotionInput _playerLocomotionInput;
         private PlayerState _playerState;
+        private PlayerActionsInput _playerActionsInput;
+        private PlayerLocomotionInput _playerLocomotionInput;
+
+        private Interactor _interactor;
+        private PlayerInteract _playerInteract;
+
 
         private Vector2 _cameraRotation = Vector2.zero;
         private Vector2 _playerTargetRotation = Vector2.zero;
@@ -55,23 +58,29 @@ namespace TopdownRPG.Character
         private float _antiBump;
         private float _stepOffset;
 
-        private PlayerMovementState _lastMovementState = PlayerMovementState.Falling;
-
+        private MovementState _lastMovementState = MovementState.Falling;
         #endregion
 
         #region Startup
-
         private void Awake() {
-            _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
             _playerState = GetComponent<PlayerState>();
-
+            _playerActionsInput = GetComponent<PlayerActionsInput>();
+            _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
+            // System
+            _playerInteract = GetComponent<PlayerInteract>();
+            //
             _antiBump = sprintSpeed;
             _stepOffset = _characterController.stepOffset;
         }
 
-        #endregion
+        private void OnEnable() {
+            _playerActionsInput.GatherPerformed += HandleGather;
+        }
 
-        #region Update Logic
+        private void OnDisable() {
+            _playerActionsInput.GatherPerformed -= HandleGather;
+        }
+        #endregion
 
         private void Update() {
             UpdateMovementState();
@@ -79,8 +88,20 @@ namespace TopdownRPG.Character
             HandleLateralMovement();
         }
 
+        private void LateUpdate() {
+            UpdateCameraRotation();
+        }
+
+        #region Handle Interact
+        private void HandleGather() {
+            _playerInteract.TryGathering();
+        }
+        #endregion
+
+        #region Handle Movement
+        // TODO: tách phần này ra file riêng
         private void UpdateMovementState() {
-            _lastMovementState = _playerState.CurrentPlayerMovementState;
+            _lastMovementState = _playerState.Movement;
 
             bool canRun = CanRun();
             bool isMovementInput = _playerLocomotionInput.MovementInput != Vector2.zero; // order
@@ -89,29 +110,27 @@ namespace TopdownRPG.Character
             bool isWalking = isMovingLaterally && (!canRun || _playerLocomotionInput.WalkToggledOn); // order & matter
             bool isGrounded = IsGrounded();
 
-            PlayerMovementState lateralState = isWalking ? PlayerMovementState.Walking
-                : isSprinting ? PlayerMovementState.Sprinting
-                : (isMovementInput || isMovingLaterally) ? PlayerMovementState.Running : PlayerMovementState.Idling;
-            _playerState.SetPlayerMovementState(lateralState);
+            MovementState lateralState = isWalking ? MovementState.Walking
+                : isSprinting ? MovementState.Sprinting
+                : (isMovementInput || isMovingLaterally) ? MovementState.Running : MovementState.Idling;
+            _playerState.SetMovement(lateralState);
 
             // Control Airborn State
             if ((!isGrounded || _jumpedLastFrame) && _characterController.velocity.y > 0f) {
-                _playerState.SetPlayerMovementState(PlayerMovementState.Jumping);
+                _playerState.SetMovement(MovementState.Jumping);
                 _jumpedLastFrame = false;
                 _characterController.stepOffset = 0f;
-            }
-            else if ((!isGrounded || _jumpedLastFrame) && _characterController.velocity.y <= 0f) {
-                _playerState.SetPlayerMovementState(PlayerMovementState.Falling);
+            } else if ((!isGrounded || _jumpedLastFrame) && _characterController.velocity.y <= 0f) {
+                _playerState.SetMovement(MovementState.Falling);
                 _jumpedLastFrame = false;
                 _characterController.stepOffset = 0f;
-            }
-            else {
+            } else {
                 _characterController.stepOffset = _stepOffset;
             }
         }
 
         private void HandleVerticalMovement() {
-            bool isGrounded = _playerState.InGroundedState();
+            bool isGrounded = _playerState.IsGrounded();
 
             _verticalVelocity -= gravity * Time.deltaTime;
 
@@ -123,7 +142,7 @@ namespace TopdownRPG.Character
                 _jumpedLastFrame = true;
             }
 
-            if (_playerState.IsStateGroundedState(_lastMovementState) && !isGrounded) {
+            if (_playerState.IsGroundedState(_lastMovementState) && !isGrounded) {
                 _verticalVelocity += _antiBump;
             }
 
@@ -134,9 +153,9 @@ namespace TopdownRPG.Character
         }
 
         private void HandleLateralMovement() {
-            bool isSprinting = _playerState.CurrentPlayerMovementState == PlayerMovementState.Sprinting;
-            bool isGrounded = _playerState.InGroundedState();
-            bool isWalking = _playerState.CurrentPlayerMovementState == PlayerMovementState.Walking;
+            bool isSprinting = _playerState.Movement == MovementState.Sprinting;
+            bool isGrounded = _playerState.IsGrounded();
+            bool isWalking = _playerState.Movement == MovementState.Walking;
 
             // State dependent acceleration and speed
             float lateralAcceleration = !isGrounded ? inAirAcceleration
@@ -178,15 +197,10 @@ namespace TopdownRPG.Character
 
             return velocity;
         }
-
         #endregion
 
-        #region Late Update Logic
-
-        private void LateUpdate() {
-            UpdateCameraRotation();
-        }
-
+        #region Handle Rotattion
+        // TODO: tách phần này ra file riêng
         private void UpdateCameraRotation() {
             _cameraRotation.x += lookSenseH * _playerLocomotionInput.LookInput.x;
             _cameraRotation.y = Mathf.Clamp(_cameraRotation.y - lookSenseV * _playerLocomotionInput.LookInput.y, -lookLimitV, lookLimitV);
@@ -194,7 +208,7 @@ namespace TopdownRPG.Character
             _playerTargetRotation.x += lookSenseH * _playerLocomotionInput.LookInput.x;
 
             float rotationTolerance = 90f;
-            bool isIdling = _playerState.CurrentPlayerMovementState == PlayerMovementState.Idling;
+            bool isIdling = _playerState.Movement == MovementState.Idling;
             IsRotatingToTarget = _rotatingToTargetTimer > 0;
 
             // ROTATE if we're not idling
@@ -235,18 +249,16 @@ namespace TopdownRPG.Character
             Quaternion targetRotationX = Quaternion.Euler(0f, _playerTargetRotation.x, 0f);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotationX, playerModelRotationSpeed * Time.deltaTime);
         }
-
         #endregion
 
         #region State Check
-
         private bool IsMovingLaterally() {
             Vector3 lateralVelocity = new Vector3(_characterController.velocity.x, 0f, _characterController.velocity.z);
             return lateralVelocity.magnitude > movingThreshold;
         }
 
         private bool IsGrounded() {
-            bool grounded = _playerState.InGroundedState() ? IsGroundedWhileGrounded() : IsGroundedWhileAirborne();
+            bool grounded = _playerState.IsGrounded() ? IsGroundedWhileGrounded() : IsGroundedWhileAirborne();
             return grounded;
         }
 
@@ -270,7 +282,6 @@ namespace TopdownRPG.Character
             // This means player is moving diagonally at 45 degrees or forward, if so, we can run
             return _playerLocomotionInput.MovementInput.y >= Mathf.Abs(_playerLocomotionInput.MovementInput.x);
         }
-
         #endregion
     }
 }

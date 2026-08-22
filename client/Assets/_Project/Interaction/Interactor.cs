@@ -92,7 +92,7 @@ namespace TopdownRPG.Interaction {
             }
         }
 
-        private void TryInteract() {
+        public void TryInteract() {
             if (_interactableTarget == null)
                 return;
 

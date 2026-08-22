@@ -12,14 +12,13 @@ namespace TopdownRPG.Interaction {
         public override string InteractionAction => interactionAction;
 
         public override void Interact(Interactor interactor) {
-            
             // todo: refactor sau, tạm thời mặc định Interactor là player
-            interactor.TryGetComponent(out PlayerController player);
+            interactor.TryGetComponent(out PlayerInteract player);
+            player.StartGathering(this);
+        }
 
-
-            // playerInteractor.ActionController.Gather(
-            //     () => CompleteGather(playerInteractor)
-            // );
+        private void OnDestroy() {
+            Debug.Log("Mất tiêu luôn");
         }
     }
 }

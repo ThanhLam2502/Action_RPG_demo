@@ -107,7 +107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4986366029250382306
 Transform:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 394.99707, y: 25.529, z: 218.9}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5672244768469073022}
@@ -234,10 +234,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
-  m_Height: 0.5
+  m_Radius: 0.1
+  m_Height: 0.3
   m_Direction: 1
-  m_Center: {x: 0, y: 0.1, z: 0}
+  m_Center: {x: 0, y: 0.12, z: 0}
 --- !u!114 &9000067714187752805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TopdownRPG.Interaction.GatherInteractable
   canInteract: 1
-  displayName: "Mushrom R\u01A1m"
+  displayName: "Mushrom-R\u01A1m"
   highlight: {fileID: 3313537337223889551}
   interactionAction: Gather

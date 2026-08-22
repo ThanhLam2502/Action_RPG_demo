@@ -8,9 +8,7 @@ namespace TopdownRPG.Interaction {
         private Transform _cameraTransform;
 
         private const float UIOffset = 0.2f;
-
-        private void Awake() {
-        }
+        
 
         void Start() {
             _cameraTransform = Camera.main?.transform;
@@ -19,9 +17,6 @@ namespace TopdownRPG.Interaction {
                 Debug.LogError($"{name}: Cannot find TextMeshProUGUI in children.");
 
             Hide();
-        }
-
-        void Update() {
         }
 
         public void Show(string displayName, string action) {
