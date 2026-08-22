@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 namespace TopdownRPG.Interaction {
-    public class ResourceInteractable : Interactable {
+    public class GatherInteractable : Interactable {
         // @formatter:off
         [Header("Resource")]
         [SerializeField] private string interactionAction = "Gather";
@@ -14,9 +14,8 @@ namespace TopdownRPG.Interaction {
         public override void Interact(Interactor interactor) {
             
             // todo: refactor sau, tạm thời mặc định Interactor là player
-            PlayerController player = interactor.GetComponent<PlayerController>();
-            
-            
+            interactor.TryGetComponent(out PlayerController player);
+
 
             // playerInteractor.ActionController.Gather(
             //     () => CompleteGather(playerInteractor)

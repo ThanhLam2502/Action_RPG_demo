@@ -21,7 +21,7 @@ namespace TopdownRPG.Interaction {
 
         private IInteractable _interactableTarget;
         #endregion
-        
+
         #region Unity Lifecycle
         private void Awake() {
         }
@@ -41,50 +41,68 @@ namespace TopdownRPG.Interaction {
         private void FindCurrentInteractable() {
             _numFound = Physics.OverlapSphereNonAlloc(_interactionPoint.position, _maxInteractDistance, _colliders, _interactLayer);
 
-            IInteractable currentInteractable = null;
+            IInteractable closestInteractable = null;
             float closestDistanceSqr = float.MaxValue;
-            
+
             for (int i = 0; i < _numFound; i++) {
                 IInteractable interactable = _colliders[i].GetComponentInParent<IInteractable>();
                 if (interactable == null)
                     continue;
 
-                // Vector3 closestPoint = _colliders[i].ClosestPoint(_interactionPoint.position);
-                // float distanceSqr = (closestPoint - _interactionPoint.position).sqrMagnitude;
-                Transform targetTransform = ((MonoBehaviour)interactable).transform;
-                float distanceSqr = (targetTransform.position - _interactionPoint.position).sqrMagnitude;
+                Vector3 closestPoint = _colliders[i].ClosestPoint(_interactionPoint.position);
+                float distanceSqr = (closestPoint - _interactionPoint.position).sqrMagnitude;
 
                 if (distanceSqr < closestDistanceSqr) {
                     closestDistanceSqr = distanceSqr;
-                    currentInteractable = interactable;
+                    closestInteractable = interactable;
                 }
             }
+
+            // -- không tìm thấy - clear
+            if (closestInteractable == null) {
+                if (_interactableTarget != null) {
+                    _interactableTarget.TargetOff();
+                    _interactableTarget.HighlightOff();
+                    _interactableTarget = null;
+                }
+
+                return;
+            }
+
+            // -- Change interactable
+            if (_interactableTarget != closestInteractable) {
+                // disable old target
+                if (_interactableTarget != null) {
+                    _interactableTarget.TargetOff();
+                    _interactableTarget.HighlightOff();
+                }
+
+                // change target
+                _interactableTarget = closestInteractable;
+                _interactableTarget.HighlightOn();
+            }
             
-            if (currentInteractable != null) {
-                _interactableTarget = currentInteractable;
+            // TODO: chỉ gọi TargetOn/TargetOff khi thực sự có thay đổi
+            // Check distance target & update target state
+            float interactDistanceSqr = _interactDistance * _interactDistance;
+            if (closestDistanceSqr <= interactDistanceSqr) {
                 _interactableTarget?.TargetOn();
             } else {
                 _interactableTarget?.TargetOff();
-                _interactableTarget = null;
             }
-            // if (currentInteractable != _interactableTarget)
-            // {
-            //     _interactableTarget?.TargetOff();
-            //
-            //     _interactableTarget = currentInteractable;
-            //
-            //     _interactableTarget?.TargetOn();
-            // }
         }
 
         private void TryInteract() {
             if (_interactableTarget == null)
                 return;
-            
-            Transform targetTransform = ((MonoBehaviour)_interactableTarget).transform;
+
             float interactDistanceSqr = _interactDistance * _interactDistance;
-            float distanceSqr = (targetTransform.position - _interactionPoint.position).sqrMagnitude;
-            
+            _interactableTarget.GameObject.TryGetComponent(out Collider targetCollider);
+            if (targetCollider == null)
+                return;
+
+            Vector3 closestPoint = targetCollider.ClosestPoint(_interactionPoint.position);
+            float distanceSqr = (closestPoint - _interactionPoint.position).sqrMagnitude;
             if (distanceSqr <= interactDistanceSqr) {
                 _interactableTarget.Interact(this);
             }

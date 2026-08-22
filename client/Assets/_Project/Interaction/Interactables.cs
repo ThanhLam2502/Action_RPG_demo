@@ -8,8 +8,8 @@ namespace TopdownRPG.Interaction {
         [SerializeField] private bool canInteract = true;
         [SerializeField] private string displayName;
         
-        // [Header("UI")]
-        // [SerializeField] private InteractableUI interactableUI;
+        [Header("Highlight")]
+        [SerializeField] private GameObject highlight;
         // @formatter:on
 
         public bool CanInteract => canInteract;
@@ -17,34 +17,40 @@ namespace TopdownRPG.Interaction {
         public string DisplayName => displayName;
         public abstract string InteractionAction { get; }
 
-        private GameObject InteractableNameCanvas;
-        private InteractableUI InteractableUI;
+        private GameObject _interactableNameCanvas;
+        private InteractableUI _interactableUI;
 
         protected virtual void Awake() {
-            // if (interactableUI == null)
-            //     interactableUI = GetComponentInChildren<InteractableUI>();
+            HighlightOff();
         }
 
         public virtual void Start() {
-            InteractableNameCanvas = GameObject.FindGameObjectWithTag("Canvas");
-            InteractableUI = InteractableNameCanvas.GetComponentInChildren<InteractableUI>();
+            _interactableNameCanvas = GameObject.FindGameObjectWithTag("Canvas");
+            _interactableUI = _interactableNameCanvas.GetComponentInChildren<InteractableUI>();
         }
 
         private void OnDestroy() {
             TargetOff();
+            HighlightOff();
         }
 
+        public virtual void HighlightOn() {
+            if (highlight != null)
+                highlight.SetActive(true);
+        }   
+
+        public virtual void HighlightOff() {
+            if (highlight != null)
+                highlight.SetActive(false);
+        }
+        
         public virtual void TargetOn() {
-            print("Target On");
-            // Enable outline / highlight
-            InteractableUI.Show(DisplayName, InteractionAction);
-            InteractableUI.SetInteractableNamePosition(this);
+            _interactableUI.Show(DisplayName, InteractionAction);
+            _interactableUI.SetInteractableNamePosition(this);
         }
 
         public virtual void TargetOff() {
-            print("Target Off");
-            // Enable outline / highlight
-            InteractableUI.Hide();
+            _interactableUI.Hide();
         }
 
         public abstract void Interact(Interactor interactor);
